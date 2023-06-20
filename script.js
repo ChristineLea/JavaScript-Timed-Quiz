@@ -1,6 +1,6 @@
 // STEP ONE add div elements & set up toggle display
 
-const test = document.getElementById("app");
+const app = document.getElementById("app");
 
 function myFunction(x) {
     if (x.style.display === "none") {
@@ -10,4 +10,4 @@ function myFunction(x) {
     }
 }
 
-// myFunction(test);
+// myFunction(app);

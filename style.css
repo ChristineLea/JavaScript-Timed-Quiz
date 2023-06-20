@@ -18,3 +18,48 @@ body {
 	height: 100vh;
     background-color: var(--var--purpleM);
 }
+
+#app,
+#quiz,
+#result {
+    background-color: var(--var--purpleM);
+    height: 100%;
+    margin: 10rem 10rem 0;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+	font-size: 4.2rem;
+	margin: 2rem 2rem 4rem;
+
+}
+h2 {
+	font-size: 3.8rem;
+	margin: 2rem 2rem 4rem;
+}
+h3 {
+	font-size: 3.4rem;
+	margin: 2rem 2rem 4rem;
+}
+p {
+	font-size: 1.8rem;
+	text-align: center;
+	margin: 2rem 4rem;
+    color: var(--var-purpleD);
+}
+.btn {
+	font-size: 1.6rem;
+	margin: 4rem 4rem 0 0;
+	align-self: flex-end;
+	padding: 0.8rem 2rem;
+	border-radius: 1.8rem;
+	text-transform: uppercase;
+	background-color: var(--var-purpleD);
+	color: var(--var-light);
+	letter-spacing: 0.1rem;
+    border: none;
+}
