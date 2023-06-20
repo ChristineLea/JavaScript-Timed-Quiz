@@ -1,0 +1,15 @@
+.app-container {
+    background-color: pink;
+    border: 2px solid red;
+}
+
+ 
+.quiz-container {
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+.result-container {
+    background-color: green;
+    border: 2px solid white;
+}
