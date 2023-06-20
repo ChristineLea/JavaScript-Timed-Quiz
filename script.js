@@ -1,6 +1,6 @@
 // STEP ONE add div elements & set up toggle display
 
-const test = document.getElementById("test");
+const test = document.getElementById("app");
 
 function myFunction(x) {
     if (x.style.display === "none") {

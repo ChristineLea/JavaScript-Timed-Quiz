@@ -1,15 +1,20 @@
-.app-container {
-    background-color: pink;
-    border: 2px solid red;
+:root {
+	--var-light: #e6e6fa;
+    --var-purpleL: #e0b0ff;
+    --var-purpleBright: #ee82ee;
+    --var--purpleM: #da70d6;
+    --var-purpleD: #66023c;
 }
-
- 
-.quiz-container {
-    background-color: yellow;
-    border: 2px solid black;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
-.result-container {
-    background-color: green;
-    border: 2px solid white;
+body {
+	font-size: 62.5%;
+	font-family: Arial, Helvetica, sans-serif;
+    color: var(--var-light);
+	width: 100vw;
+	height: 100vh;
+    background-color: var(--var--purpleM);
 }
