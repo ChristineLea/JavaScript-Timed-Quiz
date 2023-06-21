@@ -89,9 +89,12 @@ p {
 	font-style: italic;
 	color: var(--var-purpleD);
 }
-
+.result-container {
+    display: flex;
+    flex-direction: column;
+}
 #result-form {
-    margin: 8rem 0 0;
+    margin: 6rem 0 0;
 	font-size: 1rem;
 	display: flex;
 	align-items: flex-end;
@@ -117,10 +120,12 @@ p {
     background-color: var(--var-light);
     color: var(--var-purpleD);
 }
-
+.button {
+    display: flex;
+    
+}
 .end-btn {
 	    font-size: 1rem;
-    /* margin: 4rem 2rem; */
     padding: 0.8rem 1rem;
     border-radius: 1.8rem;
     text-transform: uppercase;
@@ -128,4 +133,8 @@ p {
     color: var(--var-light);
     letter-spacing: 0.05rem;
     border: none;
+}
+.margin {
+    margin: 6rem;
+    justify-content: space-between;
 }

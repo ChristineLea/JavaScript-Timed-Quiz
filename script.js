@@ -2,8 +2,8 @@
 
 const app = document.getElementById("app");
 const quiz = document.getElementById("quiz");
-
-
+const resultWin = document.getElementById("resultWin");
+const resultLose = document.getElementById("resultLose");
 function myFunction(x) {
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -14,3 +14,5 @@ function myFunction(x) {
 
 myFunction(app);
 myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
