@@ -69,8 +69,11 @@ p {
 	color: var(--var-light);
 	letter-spacing: 0.1rem;
 	border: none;
+    transition: opacity 0.5s ease;
 }
-
+.btn:hover {
+	opacity: 0.9;
+}
 .text {
 	font-size: 1.8rem;
 	margin: 1rem;
@@ -107,7 +110,8 @@ p {
 }
 #win,
 #label,
-#submit {
+#submit,
+#name {
 	margin: 0 0 0 0.5rem;
 	padding: 0.5rem;
 	/* color: rgb(32, 30, 30); */
@@ -119,13 +123,18 @@ p {
     font-size: 0.8rem;
     background-color: var(--var-light);
     color: var(--var-purpleD);
+    transition: opacity 0.5s ease;
+}
+#submit:hover {
+    opacity: 0.9;
 }
 .button {
     display: flex;
+    justify-content: space-around;
         margin: 4rem 0 0;
 }
 .end-btn {
-	    font-size: 1rem;
+	font-size: 1rem;
     padding: 0.8rem 1rem;
     border-radius: 1.8rem;
     text-transform: uppercase;
@@ -133,6 +142,10 @@ p {
     color: var(--var-light);
     letter-spacing: 0.05rem;
     border: none;
+    transition: opacity 0.5s ease;
+}
+.end-btn:hover {
+	 opacity: 0.9;
 }
 .margin {
     margin: 6rem 6rem 0;

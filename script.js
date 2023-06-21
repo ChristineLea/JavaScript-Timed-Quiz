@@ -14,7 +14,7 @@ const option4 = document.querySelector(".option4");
 const output = document.getElementById("output");
 output.setAttribute(
 	"style",
-	"margin-top: 20px; font-size: 20px; font-style: italic; color: #66023c; font-weight: bolder;"
+	"margin-top: 20px; font-size: 36px; font-style: italic; color: #66023c; font-weight: bolder; text-align: center;"
 );
 
 // DISPLAY TIMER
@@ -22,14 +22,14 @@ const countdown = document.getElementById("countdown");
 // DISPLAY SCORE
 const outputScore = document.getElementById("output-score");
 // LOCAL STORAGE
-const nameInput = document.getElementById("result-name");
+const nameInput = document.getElementById("name");
 const toggleForm = document.getElementById("result-form");
 const userNameSpan = document.getElementById("user-name");
 const userScoreSpan = document.getElementById("user-score");
 
 // VARIABLES
 let totalScore = 0;
-let questionsLeft = 9;
+let questionsLeft = 10;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
@@ -172,7 +172,7 @@ document.getElementById("startBtn").addEventListener("click", () => {
 	setTimer();
 
 	// RESET
-	questionsLeft = 9;
+	questionsLeft = 10;
 	totalScore = 0;
 
 	// COPY question array
@@ -182,10 +182,15 @@ document.getElementById("startBtn").addEventListener("click", () => {
 });
 
 const showQuestion = () => {
+
+    
+    questionsLeft--;
 	if (duplicateArr.length !== 0 && timer !== 0) {
 		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
 		thisQuestion = duplicateArr[randomIndex];
 
+		console.log(duplicateArr);
+		console.log("questions remain", questionsLeft);
 		questionEl.textContent = thisQuestion.question;
 		option1.textContent = thisQuestion.option1;
 		option2.textContent = thisQuestion.option2;
@@ -195,15 +200,17 @@ const showQuestion = () => {
 		correctAnswer = thisQuestion.answer;
 
 		// Remove used question from array
-		duplicateArr.splice([randomIndex], 1);
+        duplicateArr.splice([randomIndex], 1);
+        
+        console.log("should be one less", duplicateArr);
+		console.log("questions remain after one off", questionsLeft);
 	} else if (duplicateArr.length === 0 && timer > 0) {
-		timer = 0;
 		winner();
 	} else {
 		outOfTime();
 	}
 
-	questionsLeft--;
+     
 };
 
 // EVENT FUNCTION
@@ -306,8 +313,8 @@ const displayMessage = (type, message) => {
 document.getElementById("scoreBtn").addEventListener("click", () => {
 	myFunction(score);
 
-	let name = localStoragne.getItem("name");
-	let result = localStorage.getItem("result");
+	let name = localStorage.getItem("name");
+	let result = localStorage.getItem("score");
 
 	if (!name || !result) {
 		return;
@@ -317,13 +324,16 @@ document.getElementById("scoreBtn").addEventListener("click", () => {
 	userScoreSpan.textContent = result;
 });
 
+// const nameInput = document.getElementById("result-name");
+// const toggleForm = document.getElementById("result-form");
+// const userNameSpan = document.getElementById("user-name");
+// const userScoreSpan = document.getElementById("user-score");
+
 // RESULT FORM - SET LOCAL STORAGE
 document.getElementById("submit").addEventListener("click", function (event) {
 	event.preventDefault();
 
-	let name = document.getElementById("result-name").value;
-	let storeScore = totalScore;
-	nameInput.toUpperCase();
+	let name = document.getElementById("name").value;
 
 	if (!nameInput) {
 		displayMessage("error", "Enter Initials to save your score"); // ADD
@@ -334,7 +344,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
 	}
 
 	localStorage.setItem("name", name);
-	localStorage.setItem("result", storeScore);
+	localStorage.setItem("score", totalScore);
 
 	toggleForm.hidden = true;
 });
