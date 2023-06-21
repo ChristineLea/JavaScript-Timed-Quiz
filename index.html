@@ -30,46 +30,45 @@
             <div class="option3 text" data-number="option3"></div>
             <div class="option4 text" data-number="option4"></div>
         </div>
-            <div id="output"></div>
+        <div id="output"></div>
     </div>
 
     <!-- WIN SECTION -->
-    <div class="result-container" id="resultWin">
-        <h2 id="output-score">Hello</h2>
-        <form method="POST" id="result-form">
-            <label for="name" id="label">Record your score : </label>
-            <input type="text" id="name" name="name" placeholder="enter your initials" autocomplete="additional-name">
-            <input type="button" id="submit" value="Submit">
-            <div id="msg-div"></div>
-        </form>
-        <div class="button">
-            <button class="end-btn win-score" id="scoreBtn">View Scores</button>
-            <button class="end-btn win-home" id="homeBtn">Return Home</button>
+    <div id="resultWin">
+        <div class="result-container">
+            <h2 id="output-score"></h2>
+            <form method="POST" id="result-form" class="row">
+                
+                <label for="name" id="label">Record your score : </label>
+                <input type="text" id="name" name="name" placeholder="enter your initials">
+                <input type="button" id="submit" value="Submit">
+            </form>
+            <div class="row">
+                <h2>Results</h2>
+                <p>Name : <span id="user-name"></span></p>
+                <p>Score : <span id="user-score"></span></p>
+            </div>
         </div>
+
+       
+        <div class="result-container">
+            <div class="button">
+                <button class="end-btn" id="scoreBtn">View HighScore</button>
+                <button class="end-btn win-home" id="homeBtn">Return Home</button>
+            </div>
+        </div>
+
     </div>
 
 
     <div class="result-container" id="resultLose">
         <h2 class="margin">Hello</h2>
         <div class="button margin">
-            
-            <button class="end-btn lose-score" id="scoreBtn">View Scores</button>
             <button class="end-btn lose-home" id="homeBtn">Return Home</button>
         </div>
     </div>
 
-    <div class="result-container" id="score">
-        <h2 class="margin">Results</h2>
-        <div class="margin">
-            <p>Name :<span id="user-name"></span></p>
-            <p>Score :<span id="user-score"></span></p>
-        </div>
-        <div class="button margin">
-            <button class="end-btn score-home" id="homeBtn">Return Home</button>
-        </div>
 
-
-    </div>
     <script src="script.js"></script>
 </body>
 

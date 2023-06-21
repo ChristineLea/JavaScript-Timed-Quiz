@@ -43,12 +43,12 @@ h1 {
 	margin: 2rem 2rem 4rem;
 }
 h2 {
-	font-size: 3.8rem;
-	margin: 0 2rem 3rem;
+	font-size: 2.2rem;
+	margin: 2rem;
 }
 #question {
     font-size: 2.6rem;
-    margin: 0 2rem 3rem;
+    margin: 0 2rem 1.5rem;
 }
 
 p {
@@ -96,11 +96,16 @@ p {
     display: flex;
     flex-direction: column;
 }
+.row {
+    display: flex;
+
+}
 #result-form {
     margin: 6rem 0 0;
 	font-size: 1rem;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
+    justify-content: center;
 	width: 50%;
 	height: 20%;
 	letter-spacing: 0.05rem;

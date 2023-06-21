@@ -3,7 +3,6 @@ const app = document.getElementById("app");
 const quiz = document.getElementById("quiz");
 const resultWin = document.getElementById("resultWin");
 const resultLose = document.getElementById("resultLose");
-const score = document.getElementById("score");
 
 // VARIABLES FOR QUIZ QA
 const questionEl = document.getElementById("question");
@@ -20,12 +19,10 @@ output.setAttribute(
 // DISPLAY TIMER
 const countdown = document.getElementById("countdown");
 // DISPLAY SCORE
-const outputScore = document.getElementById("output-score");
+let outputScore = document.getElementById("output-score");
 // LOCAL STORAGE
-const nameInput = document.getElementById("name");
-const toggleForm = document.getElementById("result-form");
-const userNameSpan = document.getElementById("user-name");
-const userScoreSpan = document.getElementById("user-score");
+let userNameSpan = document.getElementById("user-name");
+let userScoreSpan = document.getElementById("user-score");
 
 // VARIABLES
 let totalScore = 0;
@@ -132,7 +129,6 @@ function myFunction(x) {
 myFunction(quiz);
 myFunction(resultWin);
 myFunction(resultLose);
-myFunction(score);
 
 // QUIZ TIMER
 const setTimer = () => {
@@ -251,9 +247,8 @@ const delay = () => {
 // WIN FUNCTION
 const winner = () => {
 	myFunction(quiz);
-	myFunction(resultWin);
-	toggleForm.hidden = false;
-
+    myFunction(resultWin);
+    
 	const displayScore = document.createElement("p");
 	displayScore.textContent = `RESULT: ${totalScore} / 10`;
 	outputScore.appendChild(displayScore);
@@ -282,36 +277,9 @@ document.querySelector(".win-home").addEventListener("click", () => {
 	myFunction(app);
 });
 
-// EVENT FIRES FROM SCORE PAGE
-document.querySelector(".score-home").addEventListener("click", () => {
-	myFunction(score);
-
-	myFunction(app);
-});
-
-//  SCORE BUTTON
-// EVENT FIRES FROM LOSE PAGE
-document.querySelector(".lose-score").addEventListener("click", () => {
-	myFunction(resultLose);
-
-	myFunction(score);
-});
-// EVENT FIRES FROM WIN PAGE
-document.querySelector(".win-score").addEventListener("click", () => {
-	myFunction(resultWin);
-
-	myFunction(score);
-});
-
-// DISPLAY MESSAGE
-const displayMessage = (type, message) => {
-	msgDiv.textContent = message;
-	msgDiv.setAttribute("class", type);
-};
 
 // GET LOCAL STORAGE
 document.getElementById("scoreBtn").addEventListener("click", () => {
-	myFunction(score);
 
 	let name = localStorage.getItem("name");
 	let result = localStorage.getItem("score");
@@ -330,23 +298,14 @@ document.getElementById("scoreBtn").addEventListener("click", () => {
 // const userScoreSpan = document.getElementById("user-score");
 
 // RESULT FORM - SET LOCAL STORAGE
-document.getElementById("submit").addEventListener("click", function (event) {
+document.getElementById("submit").addEventListener("click", function(event) {
 	event.preventDefault();
 
-	let name = document.getElementById("name").value;
-
-	if (!nameInput) {
-		displayMessage("error", "Enter Initials to save your score"); // ADD
-	} else if (nameInput !== typeof "string") {
-		displayMessage("error", "Enter letter characters only");
-	} else {
-		displayMessage("success", "Results saved successfully");
-	}
-
+    let name = document.getElementById("name").value;
+    
 	localStorage.setItem("name", name);
 	localStorage.setItem("score", totalScore);
 
-	toggleForm.hidden = true;
 });
 
 // QUIZ ANSWER EVENTS
