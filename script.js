@@ -133,7 +133,7 @@ myFunction(resultLose);
 // QUIZ TIMER
 const setTimer = () => {
 	// let sec = timer;
-	timer = 30;
+	timer = 60;
 
 	let interval = setInterval(function () {
 		if (timer > 0 && duplicateArr.length !== 0) {
@@ -147,13 +147,12 @@ const setTimer = () => {
 		} else if (timer > 0 && duplicateArr.length === 0) {
 			timer = 0;
 			winner();
-		} else if (timer === 0 && duplicateArr.length !== 0) {
+		} else  {
 			// HIDE quiz
 			clearInterval(interval);
 
 			outOfTime();
-		} else {
-		}
+		} 
 	}, 1000);
 };
 
