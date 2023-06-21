@@ -5,6 +5,13 @@ const resultWin = document.getElementById("resultWin");
 const resultLose = document.getElementById("resultLose");
 const score = document.getElementById("score");
 
+    // VARIABLES FOR QUIZ QA
+const questionEl = document.getElementById("question");
+const option1 = document.querySelector(".option1");
+const option2 = document.querySelector(".option2");
+const option3 = document.querySelector(".option3");
+const option4 = document.querySelector(".option4");
+
 // VARIABLES
 let totalScore = 0;
 let questionsLeft = 9;
@@ -12,6 +19,7 @@ let acceptAnswer = true;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
+let timer = 100;
 
 // QUESTION ARRAY
 let questionArray = [
@@ -101,8 +109,6 @@ let questionArray = [
 	},
 ];
 
-
-
 // START GAME (EVENT)
 document.getElementById("startBtn").addEventListener("click", () => {
 	// HIDE APP Page / SHOW QUIZ Page
@@ -121,13 +127,41 @@ document.getElementById("startBtn").addEventListener("click", () => {
     showQuestion();
 });
 
+const showQuestion = () => {
+
+    if (duplicateArr.length !== 0) {
+        let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+        thisQuestion = duplicateArr[randomIndex];
+
+        questionEl.textContent = thisQuestion.question;
+        option1.textContent = thisQuestion.option1;
+        option2.textContent = thisQuestion.option2;
+        option3.textContent = thisQuestion.option3;
+        option4.textContent = thisQuestion.option4;
+
+        correctAnswer = thisQuestion.answer;
+
+        // Remove used question from array
+        duplicateArr.splice([randomIndex], 1);
+    } else {
+        // myFunction(quiz); // HIDE QUIZ
+        // DIRECT TO END GAME
+    }
+
+    acceptAnswer = true;
+    questionsLeft--;
+};
+
+    // QUIZ TIMER
 const setTimer = () => {
-    let sec = 100;
+    
+    let sec = timer;
+
 
     setInterval(function () {
         if (sec > 0) {
             sec--;
-            console.log(sec); //TEST
+            // console.log(sec); //TEST
         } else {
 
         }
