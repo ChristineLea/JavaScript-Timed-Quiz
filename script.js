@@ -13,6 +13,8 @@ const option3 = document.querySelector(".option3");
 const option4 = document.querySelector(".option4");
 const output = document.getElementById("output");
 
+const outputScore = document.getElementById("output-score");
+
 // VARIABLES
 let totalScore = 0;
 let questionsLeft = 9;
@@ -130,24 +132,35 @@ document.getElementById("startBtn").addEventListener("click", () => {
 });
 
 const showQuestion = () => {
-	let randomIndex = Math.floor(Math.random() * duplicateArr.length);
-	thisQuestion = duplicateArr[randomIndex];
+	if (duplicateArr.length !== 0 && timer !== 0) {
+		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+		thisQuestion = duplicateArr[randomIndex];
 
-	questionEl.textContent = thisQuestion.question;
-	option1.textContent = thisQuestion.option1;
-	option2.textContent = thisQuestion.option2;
-	option3.textContent = thisQuestion.option3;
-	option4.textContent = thisQuestion.option4;
+		questionEl.textContent = thisQuestion.question;
+		option1.textContent = thisQuestion.option1;
+		option2.textContent = thisQuestion.option2;
+		option3.textContent = thisQuestion.option3;
+		option4.textContent = thisQuestion.option4;
 
-	correctAnswer = thisQuestion.answer;
+		correctAnswer = thisQuestion.answer;
 
-	// Remove used question from array
-	duplicateArr.splice([randomIndex], 1);
+		// Remove used question from array
+		duplicateArr.splice([randomIndex], 1);
+    } else if (duplicateArr.length === 0 && timer !== 0) {
+        // hide QUIZ
+        myFunction(quiz);
+        
+        winner();
+    } else {
+        // Hide QUIZ
+        myFunction(quiz);
 
-	// myFunction(quiz); // HIDE QUIZ
-	// DIRECT TO END GAME
+        outOfTime();
+    }
+		// myFunction(quiz); // HIDE QUIZ
+		// DIRECT TO END GAME
 
-	questionsLeft--;
+		questionsLeft--;
 };
 
 // EVENT FUNCTION
@@ -165,7 +178,6 @@ const checkAnswer = (e) => {
 		output.textContent = "That's Incorrect";
 		timer--;
 	}
-
 	delay();
 };
 
@@ -177,12 +189,26 @@ const delay = () => {
 		if (second > 0) {
 			second--;
 		} else {
-            clearInterval(addDelay);
-            output.hidden = true;
+			clearInterval(addDelay);
+			output.hidden = true;
 			showQuestion();
 		}
 	}, 500);
 };
+
+
+const winner = () => {
+    myFunction(resultWin);
+
+    const displayScore = document.createElement("p");
+    displayScore.textContent = `RESULT: ${totalScore} / 10`;
+    outputScore.appendChild(displayScore);
+    displayScore.setAttribute("class", "extra");
+}
+
+const outOfTime = () => {
+    myFunction(resultLose);
+}
 
 // QUIZ ANSWER EVENTS
 option1.addEventListener("click", checkAnswer);
