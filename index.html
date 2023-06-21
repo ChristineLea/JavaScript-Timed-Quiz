@@ -33,8 +33,18 @@
 
     </div>
 
-    <div class="result-container" id="result">
-        <h3>Hello</h3>
+    <div class="result-container" id="resultWin">
+
+        <h2>Hello</h2>
+        <form method="POST" id="result-form">
+            <label for="result-name" id="label">Record your score : </label>
+            <input type="text" id="win" id="result-name" name="name" placeholder="enter your initials">
+            <a href="#" id="submit">Submit</a>
+            <div id="msg-div"></div>
+        </form>
+            <button class="btn end-btn" id="homeBtn">Return Home</button>
+            <button class="btn end-btn" id="scoreBtn">View Scores</button>
+
     </div>
     <script src="script.js"></script>
 </body>

@@ -1,6 +1,8 @@
 // STEP ONE add div elements & set up toggle display
 
 const app = document.getElementById("app");
+const quiz = document.getElementById("quiz");
+
 
 function myFunction(x) {
     if (x.style.display === "none") {
@@ -11,3 +13,4 @@ function myFunction(x) {
 }
 
 myFunction(app);
+myFunction(quiz);
