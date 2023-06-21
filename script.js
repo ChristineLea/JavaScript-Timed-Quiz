@@ -5,6 +5,14 @@ const resultWin = document.getElementById("resultWin");
 const resultLose = document.getElementById("resultLose");
 const score = document.getElementById("score");
 
+// VARIABLES
+let totalScore = 0;
+let questionsLeft = 9;
+let acceptAnswer = true;
+let duplicateArr = [];
+let correctAnswer;
+let thisQuestion;
+
 // QUESTION ARRAY
 let questionArray = [
 	{
@@ -93,6 +101,28 @@ let questionArray = [
 	},
 ];
 
+
+
+// START GAME (EVENT)
+document.getElementById("startBtn").addEventListener("click", () => {
+    myFunction(app);
+    myFunction(quiz);
+    // HIDE APP Page / SHOW QUIZ Page
+   
+
+    // RESET 
+    questionsLeft = 9;
+    totalScore = 0;
+
+    // COPY question array
+    duplicateArr = [...questionArray];
+
+});
+
+
+
+
+    // TOGGLE DISPLAY ON/OFF FUNCTION
 function myFunction(x) {
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -101,8 +131,8 @@ function myFunction(x) {
     }
 }
 
-// myFunction(app);
-// myFunction(quiz);
-// myFunction(resultWin);
-// myFunction(resultLose);
-// myFunction(score);
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz); 
+myFunction(resultWin);
+myFunction(resultLose);
+myFunction(score);

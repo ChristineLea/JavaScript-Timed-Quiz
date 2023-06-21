@@ -15,7 +15,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	color: var(--var-light);
 	width: 100vw;
-	height: 100vh;
+	/* height: 100vh; */
 	background-color: var(--var--purpleM);
 }
 
@@ -26,7 +26,7 @@ body {
 	height: 100%;
 }
 #app {
-	margin: 8rem 10rem 0;
+	margin: 4rem 10rem 0;
 }
 #quiz,
 #resultWin {
