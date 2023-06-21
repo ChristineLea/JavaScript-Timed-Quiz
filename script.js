@@ -105,20 +105,34 @@ let questionArray = [
 
 // START GAME (EVENT)
 document.getElementById("startBtn").addEventListener("click", () => {
-    myFunction(app);
-    myFunction(quiz);
-    // HIDE APP Page / SHOW QUIZ Page
-   
+	// HIDE APP Page / SHOW QUIZ Page
+	myFunction(app);
+	myFunction(quiz);
 
-    // RESET 
-    questionsLeft = 9;
-    totalScore = 0;
+	setTimer();
 
-    // COPY question array
-    duplicateArr = [...questionArray];
+	// RESET
+	questionsLeft = 9;
+	totalScore = 0;
 
+	// COPY question array
+	duplicateArr = [...questionArray];
+
+    showQuestion();
 });
 
+const setTimer = () => {
+    let sec = 100;
+
+    setInterval(function () {
+        if (sec > 0) {
+            sec--;
+            console.log(sec); //TEST
+        } else {
+
+        }
+    }, 1000);
+};
 
 
 
