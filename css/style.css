@@ -5,11 +5,13 @@
 	--var--purpleM: #da70d6;
 	--var-purpleD: #66023c;
 }
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+
 body {
 	font-size: 62.5%;
 	font-family: Arial, Helvetica, sans-serif;
@@ -19,36 +21,34 @@ body {
 	background-color: var(--var--purpleM);
 }
 
+/* SECTION LAYOUT */
 #app,
 #quiz,
 #resultWin {
 	background-color: var(--var--purpleM);
 	height: 100%;
 }
+
 #app {
 	margin: 4rem 10rem 0;
 }
+
 #quiz,
 #resultWin {
 	margin: 4rem 5rem 0;
 }
+
 .center {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
+
+/* HOME PAGE SECTION STYLES */
 h1 {
 	font-size: 4.2rem;
 	margin: 2rem 2rem 4rem;
-}
-h2 {
-	font-size: 2.2rem;
-	margin: 2rem;
-}
-#question {
-    font-size: 2.6rem;
-    margin: 0 2rem 1.5rem;
 }
 
 p {
@@ -57,7 +57,7 @@ p {
 	margin: 2rem 4rem;
 	color: var(--var-purpleD);
 }
-/* ADD TRANSITION & hover */
+
 .btn {
 	font-size: 1.6rem;
 	margin: 4rem 4rem 0 0;
@@ -71,9 +71,17 @@ p {
 	border: none;
     transition: opacity 0.5s ease;
 }
+
 .btn:hover {
 	opacity: 0.9;
 }
+
+/* QUIZ SECTION STYLES */
+#question {
+    font-size: 2.6rem;
+    margin: 0 2rem 1.5rem;
+}
+
 .text {
 	font-size: 1.8rem;
 	margin: 1rem;
@@ -84,6 +92,7 @@ p {
 
 	transition: background-color 1s ease;
 }
+
 .text:hover {
 	cursor: pointer;
 	background-color: var(--var-light);
@@ -91,15 +100,22 @@ p {
 	color: rgb(32, 30, 30);
 }
 
-
+/* WIN SECTION STYLES */
 .result-container {
     display: flex;
     flex-direction: column;
 }
+
 .row {
     display: flex;
-
 }
+
+h2 {
+	font-size: 2.2rem;
+	margin: 2rem;
+}
+
+/* Form Styles */
 #result-form {
     margin: 6rem 0 0;
 	font-size: 1rem;
@@ -113,6 +129,7 @@ p {
         padding: 2rem 0;
     background-color: var(--var-purpleD);
 }
+
 #win,
 #label,
 #submit,
@@ -122,6 +139,7 @@ p {
 	/* color: rgb(32, 30, 30); */
     color: var(--var-purpleL);
 }
+
 #submit {
 	text-decoration: none;
 	margin: 0 1rem;
@@ -130,14 +148,11 @@ p {
     color: var(--var-purpleD);
     transition: opacity 0.5s ease;
 }
+
 #submit:hover {
     opacity: 0.9;
 }
-.button {
-    display: flex;
-    justify-content: space-around;
-        margin: 4rem 0 0;
-}
+
 .end-btn {
 	font-size: 1rem;
     padding: 0.8rem 1rem;
@@ -149,16 +164,19 @@ p {
     border: none;
     transition: opacity 0.5s ease;
 }
+
 .end-btn:hover {
 	 opacity: 0.9;
 }
+
+/* LOSE SECTION STYLES */
+.button {
+    display: flex;
+    justify-content: space-around;
+        margin: 4rem 0 0;
+}
+
 .margin {
     margin: 6rem 6rem 0;
     justify-content: space-between;
 }
-li {
-    font-size: 1.8rem;
-    color: var(--var-purpleD);
-}
-
-/* ADD STYLES TO SCORE DISPLAY CLASS=EXTRA */

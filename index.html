@@ -5,21 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>JAVASCRIPT QUIZ</title>
 </head>
 
 <body>
 
-
+    <!-- HOME PAGE SECTION -->
     <div class="app-container" id="app">
         <div class="center">
             <h1>Take the JavaScript Quiz!!!</h1>
             <p>10 questions in 1 minute! Save your score!</p>
             <button class="btn" id="startBtn">Start Quiz</button>
         </div>
-
     </div>
-
+    <!-- QUIZ SECTION -->
     <div class="quiz-container" id="quiz">
         <div class="center">
             <div id="countdown"></div>
@@ -37,7 +36,6 @@
         <div class="result-container">
             <h2 id="output-score">Quiz Complete!</h2>
             <form method="POST" id="result-form" class="row">
-                
                 <label for="name" id="label">Record your score : </label>
                 <input type="text" id="name" name="name" placeholder="enter your initials">
                 <input type="button" id="submit" value="Submit">
@@ -48,18 +46,15 @@
                 <p>Score : <span id="user-score"></span></p>
             </div>
         </div>
-
-       
         <div class="result-container">
             <div class="button">
                 <button class="end-btn" id="scoreBtn">View Score</button>
                 <button class="end-btn win-home" id="homeBtn">Return Home</button>
             </div>
         </div>
-
     </div>
 
-
+    <!-- LOSE SECTION -->
     <div class="result-container" id="resultLose">
         <h2 class="margin">You ran out of time!</h2>
         <div class="button margin">
@@ -67,8 +62,6 @@
         </div>
     </div>
 
-
     <script src="script.js"></script>
 </body>
-
 </html>

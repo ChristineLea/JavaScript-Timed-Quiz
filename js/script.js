@@ -132,7 +132,7 @@ myFunction(resultLose);
 
 // QUIZ TIMER
 const setTimer = () => {
-	// let sec = timer;
+	
 	timer = 60;
 
 	let interval = setInterval(function () {
@@ -143,16 +143,13 @@ const setTimer = () => {
 				"style",
 				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
 			);
-			// console.log(sec); //TEST
 		} else if (timer > 0 && duplicateArr.length === 0) {
 			timer = 0;
 			winner();
-		} else  {
-			// HIDE quiz
+		} else {
 			clearInterval(interval);
-
 			outOfTime();
-		} 
+		}
 	}, 1000);
 };
 
@@ -176,9 +173,10 @@ document.getElementById("startBtn").addEventListener("click", () => {
 	showQuestion();
 });
 
+// SHOW QUESTION
 const showQuestion = () => {
-    questionsLeft--;
-    console.log("Q#");
+	questionsLeft--;
+
 	if (duplicateArr.length !== 0 && timer !== 0) {
 		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
 		thisQuestion = duplicateArr[randomIndex];
@@ -190,18 +188,17 @@ const showQuestion = () => {
 		option4.textContent = thisQuestion.option4;
 
 		correctAnswer = thisQuestion.answer;
-		
+
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
 	} else if (duplicateArr.length === 0 && timer > 0) {
 		winner();
 	} else {
 		outOfTime();
-    }
-
+	}
 };
 
-// EVENT FUNCTION
+// CHECK ANSWER 
 const checkAnswer = (e) => {
 	const selectOption = e.target;
 	const selectAnswer = selectOption.dataset["number"];
@@ -221,6 +218,7 @@ const checkAnswer = (e) => {
 
 //  DELAY ON ANSWER RESPONSE
 const delay = () => {
+	
 	let second = 1;
 
 	let addDelay = setInterval(function () {
@@ -236,9 +234,11 @@ const delay = () => {
 
 // WIN FUNCTION
 const winner = () => {
+	// HIDE Quiz / SHOW ResultWin
 	myFunction(quiz);
 	myFunction(resultWin);
 
+	// OUTPUT Score
 	const displayScore = document.createElement("p");
 	displayScore.textContent = `RESULT: ${totalScore} / 10`;
 	outputScore.appendChild(displayScore);
@@ -249,20 +249,22 @@ const winner = () => {
 
 // LOSE FUNCTION
 const outOfTime = () => {
+	// HIDE Quiz SHOW ResultLose
 	myFunction(quiz);
 	myFunction(resultLose);
 };
 
-// HOME BUTTON
-// EVENT FIRES FROM THE LOSE PAGE
+		// HOME BUTTON
+// EVENT Fires from LOSE Page
 document.querySelector(".lose-home").addEventListener("click", () => {
-	myFunction(resultLose);
+	myFunction(resultLose); // HIDE resultLose SHOW App
 
 	myFunction(app);
 });
-// EVENT FIRES FROM WIN PAGE
+
+// EVENT Fisres from WIN Page
 document.querySelector(".win-home").addEventListener("click", () => {
-	myFunction(resultWin);
+	myFunction(resultWin); // HIDE resultWin SHOW App
 
 	myFunction(app);
 });
