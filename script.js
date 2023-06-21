@@ -50,8 +50,7 @@ let questionArray = [
 		answer: "option1",
 	},
 	{
-		question:
-			"What allows data input for functions?",
+		question: "What allows data input for functions?",
 		option1: "Methods",
 		option2: "Index",
 		option3: "Parameters",
@@ -75,8 +74,7 @@ let questionArray = [
 		answer: "option1",
 	},
 	{
-		question:
-			"What parameters are required for an addEventListener?",
+		question: "What parameters are required for an addEventListener?",
 		option1: "event, attribute",
 		option2: "event, function",
 		option3: "event, method",
@@ -84,8 +82,7 @@ let questionArray = [
 		answer: "option2",
 	},
 	{
-		question:
-			"What are the setItem() parameters?",
+		question: "What are the setItem() parameters?",
 		option1: "Key",
 		option2: "Variable, Value",
 		option3: "Key, Value",
@@ -93,8 +90,7 @@ let questionArray = [
 		answer: "option3",
 	},
 	{
-		question:
-			"What happens to data in local storage?",
+		question: "What happens to data in local storage?",
 		option1: "It expires after 24 hours",
 		option2: "The data will clear after the computer is restarted",
 		option3: "The data is cleared from local storage",
@@ -119,21 +115,6 @@ let questionArray = [
 	},
 ];
 
-// TOGGLE DISPLAY ON/OFF FUNCTION
-function myFunction(x) {
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
-
-// myFunction(app); // SHOW THIS PAGE
-myFunction(quiz);
-myFunction(resultWin);
-myFunction(resultLose);
-myFunction(score);
-
 // START GAME (EVENT)
 document.getElementById("startBtn").addEventListener("click", () => {
 	// HIDE APP Page / SHOW QUIZ Page
@@ -142,7 +123,7 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
 	output.hidden = true;
 
-    timer = 30;
+	timer = 30;
 	setTimer();
 
 	// RESET
@@ -171,14 +152,8 @@ const showQuestion = () => {
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
 	} else if (duplicateArr.length === 0 && timer !== 0) {
-		// hide QUIZ
-		myFunction(quiz);
-
 		winner();
 	} else {
-		// Hide QUIZ
-		myFunction(quiz);
-
 		outOfTime();
 	}
 	// myFunction(quiz); // HIDE QUIZ
@@ -212,16 +187,19 @@ const delay = () => {
 	let addDelay = setInterval(function () {
 		if (second > 0) {
 			second--;
+			console.log(second);
 		} else {
 			clearInterval(addDelay);
 			output.hidden = true;
 			showQuestion();
+			console.log(second);
 		}
 	}, 500);
 };
 
 // WIN FUNCTION
 const winner = () => {
+	myFunction(quiz);
 	myFunction(resultWin);
 	toggleForm.hidden = false;
 
@@ -235,29 +213,25 @@ const winner = () => {
 
 // LOSE FUNCTION
 const outOfTime = () => {
-    myFunction(resultLose);
-    
-
+	myFunction(quiz);
+	myFunction(resultLose);
 };
-// myFunction(score); ADD TO HOME BUTTON
-
-
 
 // HOME BUTTON
-         // EVENT FIRES FROM THE LOSE PAGE
+// EVENT FIRES FROM THE LOSE PAGE
 document.querySelector(".lose-home").addEventListener("click", () => {
-    myFunction(resultLose);
+	myFunction(resultLose);
 
-    myFunction(app);
+	myFunction(app);
 });
-        // EVENT FIRES FROM WIN PAGE
+// EVENT FIRES FROM WIN PAGE
 document.querySelector(".win-home").addEventListener("click", () => {
 	myFunction(resultWin);
 
 	myFunction(app);
 });
 
-        // EVENT FIRES FROM SCORE PAGE
+// EVENT FIRES FROM SCORE PAGE
 document.querySelector(".score-home").addEventListener("click", () => {
 	myFunction(score);
 
@@ -265,19 +239,18 @@ document.querySelector(".score-home").addEventListener("click", () => {
 });
 
 //  SCORE BUTTON
-        // EVENT FIRES FROM LOSE PAGE
+// EVENT FIRES FROM LOSE PAGE
 document.querySelector(".lose-score").addEventListener("click", () => {
 	myFunction(resultLose);
 
 	myFunction(score);
 });
-        // EVENT FIRES FROM WIN PAGE
+// EVENT FIRES FROM WIN PAGE
 document.querySelector(".win-score").addEventListener("click", () => {
 	myFunction(resultWin);
 
 	myFunction(score);
 });
-
 
 // DISPLAY MESSAGE
 const displayMessage = (type, message) => {
@@ -287,8 +260,7 @@ const displayMessage = (type, message) => {
 
 // GET LOCAL STORAGE
 document.getElementById("scoreBtn").addEventListener("click", () => {
-    
-    myFunction(score);
+	myFunction(score);
 
 	let name = localStoragne.getItem("name");
 	let result = localStorage.getItem("result");
@@ -299,7 +271,6 @@ document.getElementById("scoreBtn").addEventListener("click", () => {
 
 	userNameSpan.textContent = name;
 	userScoreSpan.textContent = result;
-
 });
 
 // RESULT FORM - SET LOCAL STORAGE
@@ -334,21 +305,36 @@ option4.addEventListener("click", checkAnswer);
 const setTimer = () => {
 	let sec = timer;
 
-	setInterval(function () {
+	let interval = setInterval(function () {
 		if (sec > 0) {
-            sec--;
-            countdown.textContent = sec;
-            countdown.setAttribute(
+			countdown.textContent = sec;
+			sec--;
+			console.log(sec);
+
+			countdown.setAttribute(
 				"style",
 				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
 			);
 			// console.log(sec); //TEST
-		} else {
+		} else if (sec === 0) {
 			// HIDE quiz
-			myFunction(quiz);
+			clearInterval(interval);
+
 			outOfTime();
 		}
 	}, 1000);
 };
+// TOGGLE DISPLAY ON/OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
 
-
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
+myFunction(score);
