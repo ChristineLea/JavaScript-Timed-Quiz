@@ -136,7 +136,7 @@ const setTimer = () => {
 	timer = 30;
 
 	let interval = setInterval(function () {
-		if (timer > 0 && questionsLeft) {
+		if (timer > 0 && duplicateArr.length !== 0) {
 			timer--;
 			countdown.textContent = timer;
 			countdown.setAttribute(
@@ -144,10 +144,10 @@ const setTimer = () => {
 				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
 			);
 			// console.log(sec); //TEST
-		} else if (timer > 0 && !questionsLeft) {
+		} else if (timer > 0 && duplicateArr.length === 0) {
 			timer = 0;
 			winner();
-		} else if (timer === 0 && questionsLeft) {
+		} else if (timer === 0 && duplicateArr.length !== 0) {
 			// HIDE quiz
 			clearInterval(interval);
 
@@ -178,15 +178,12 @@ document.getElementById("startBtn").addEventListener("click", () => {
 });
 
 const showQuestion = () => {
-
-    
     questionsLeft--;
+    console.log("Q#");
 	if (duplicateArr.length !== 0 && timer !== 0) {
 		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
 		thisQuestion = duplicateArr[randomIndex];
 
-		console.log(duplicateArr);
-		console.log("questions remain", questionsLeft);
 		questionEl.textContent = thisQuestion.question;
 		option1.textContent = thisQuestion.option1;
 		option2.textContent = thisQuestion.option2;
@@ -194,26 +191,21 @@ const showQuestion = () => {
 		option4.textContent = thisQuestion.option4;
 
 		correctAnswer = thisQuestion.answer;
-
+		
 		// Remove used question from array
-        duplicateArr.splice([randomIndex], 1);
-        
-        console.log("should be one less", duplicateArr);
-		console.log("questions remain after one off", questionsLeft);
+		duplicateArr.splice([randomIndex], 1);
 	} else if (duplicateArr.length === 0 && timer > 0) {
 		winner();
 	} else {
 		outOfTime();
-	}
+    }
 
-     
 };
 
 // EVENT FUNCTION
 const checkAnswer = (e) => {
 	const selectOption = e.target;
 	const selectAnswer = selectOption.dataset["number"];
-	acceptAnswer = false;
 
 	if (selectAnswer === correctAnswer) {
 		output.hidden = false;
@@ -224,6 +216,7 @@ const checkAnswer = (e) => {
 		output.textContent = "That's Incorrect";
 		timer--;
 	}
+
 	delay();
 };
 
@@ -234,12 +227,10 @@ const delay = () => {
 	let addDelay = setInterval(function () {
 		if (second > 0) {
 			second--;
-			console.log(second);
 		} else {
 			clearInterval(addDelay);
 			output.hidden = true;
 			showQuestion();
-			console.log(second);
 		}
 	}, 500);
 };
@@ -247,8 +238,8 @@ const delay = () => {
 // WIN FUNCTION
 const winner = () => {
 	myFunction(quiz);
-    myFunction(resultWin);
-    
+	myFunction(resultWin);
+
 	const displayScore = document.createElement("p");
 	displayScore.textContent = `RESULT: ${totalScore} / 10`;
 	outputScore.appendChild(displayScore);
@@ -277,10 +268,8 @@ document.querySelector(".win-home").addEventListener("click", () => {
 	myFunction(app);
 });
 
-
 // GET LOCAL STORAGE
 document.getElementById("scoreBtn").addEventListener("click", () => {
-
 	let name = localStorage.getItem("name");
 	let result = localStorage.getItem("score");
 
@@ -292,20 +281,14 @@ document.getElementById("scoreBtn").addEventListener("click", () => {
 	userScoreSpan.textContent = result;
 });
 
-// const nameInput = document.getElementById("result-name");
-// const toggleForm = document.getElementById("result-form");
-// const userNameSpan = document.getElementById("user-name");
-// const userScoreSpan = document.getElementById("user-score");
-
 // RESULT FORM - SET LOCAL STORAGE
-document.getElementById("submit").addEventListener("click", function(event) {
+document.getElementById("submit").addEventListener("click", function (event) {
 	event.preventDefault();
 
-    let name = document.getElementById("name").value;
-    
+	let name = document.getElementById("name").value;
+
 	localStorage.setItem("name", name);
 	localStorage.setItem("score", totalScore);
-
 });
 
 // QUIZ ANSWER EVENTS
