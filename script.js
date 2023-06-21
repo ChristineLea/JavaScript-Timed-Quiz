@@ -1,21 +1,22 @@
-    // TOGGLE DISPLAY ON/OFF
+// TOGGLE DISPLAY ON/OFF
 const app = document.getElementById("app");
 const quiz = document.getElementById("quiz");
 const resultWin = document.getElementById("resultWin");
 const resultLose = document.getElementById("resultLose");
 const score = document.getElementById("score");
 
-    // VARIABLES FOR QUIZ QA
+// VARIABLES FOR QUIZ QA
 const questionEl = document.getElementById("question");
 const option1 = document.querySelector(".option1");
 const option2 = document.querySelector(".option2");
 const option3 = document.querySelector(".option3");
 const option4 = document.querySelector(".option4");
 
+
+
 // VARIABLES
 let totalScore = 0;
 let questionsLeft = 9;
-let acceptAnswer = true;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
@@ -124,63 +125,96 @@ document.getElementById("startBtn").addEventListener("click", () => {
 	// COPY question array
 	duplicateArr = [...questionArray];
 
-    showQuestion();
+	showQuestion();
 });
 
 const showQuestion = () => {
+	
+		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+		thisQuestion = duplicateArr[randomIndex];
 
-    if (duplicateArr.length !== 0) {
-        let randomIndex = Math.floor(Math.random() * duplicateArr.length);
-        thisQuestion = duplicateArr[randomIndex];
+		questionEl.textContent = thisQuestion.question;
+		option1.textContent = thisQuestion.option1;
+		option2.textContent = thisQuestion.option2;
+		option3.textContent = thisQuestion.option3;
+		option4.textContent = thisQuestion.option4;
 
-        questionEl.textContent = thisQuestion.question;
-        option1.textContent = thisQuestion.option1;
-        option2.textContent = thisQuestion.option2;
-        option3.textContent = thisQuestion.option3;
-        option4.textContent = thisQuestion.option4;
+		correctAnswer = thisQuestion.answer;
 
-        correctAnswer = thisQuestion.answer;
+		// Remove used question from array
+		duplicateArr.splice([randomIndex], 1);
+	
+		// myFunction(quiz); // HIDE QUIZ
+		// DIRECT TO END GAME
 
-        // Remove used question from array
-        duplicateArr.splice([randomIndex], 1);
-    } else {
-        // myFunction(quiz); // HIDE QUIZ
-        // DIRECT TO END GAME
-    }
-
-    acceptAnswer = true;
-    questionsLeft--;
+	questionsLeft--;
 };
 
-    // QUIZ TIMER
-const setTimer = () => {
+
+
+
+// EVENT FUNCTION
+const checkAnswer = (e) => {
+ 
+
+	const selectOption = e.target;
+	const selectAnswer = selectOption.dataset["number"];
+	acceptAnswer = false;
     
-    let sec = timer;
+	if (selectAnswer === correctAnswer) {
+        totalScore++;
+    } else {
 
+        timer--;
+    }
 
-    setInterval(function () {
-        if (sec > 0) {
-            sec--;
-            // console.log(sec); //TEST
-        } else {
-
-        }
-    }, 1000);
+    delay();
 };
 
+//  DELAY ON ANSWER RESPONSE
+const delay = () => {
+    let second = 1;
 
+    let addDelay = setInterval(function () {
+        if (second > 0) {
+            second--;
+        } else {
+            clearInterval(addDelay);
+            showQuestion();
+        }
+    }, 500);
+};
 
-    // TOGGLE DISPLAY ON/OFF FUNCTION
+// QUIZ ANSWER EVENTS
+option1.addEventListener("click", checkAnswer);
+option2.addEventListener("click", checkAnswer);
+option3.addEventListener("click", checkAnswer);
+option4.addEventListener("click", checkAnswer);
+
+// QUIZ TIMER
+const setTimer = () => {
+	let sec = timer;
+
+	setInterval(function () {
+		if (sec > 0) {
+			sec--;
+			// console.log(sec); //TEST
+		} else {
+		}
+	}, 1000);
+};
+
+// TOGGLE DISPLAY ON/OFF FUNCTION
 function myFunction(x) {
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
 }
 
 // myFunction(app); // SHOW THIS PAGE
-myFunction(quiz); 
+myFunction(quiz);
 myFunction(resultWin);
 myFunction(resultLose);
 myFunction(score);
