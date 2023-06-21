@@ -116,20 +116,6 @@ let questionArray = [
 	},
 ];
 
-// TOGGLE DISPLAY ON/OFF FUNCTION
-function myFunction(x) {
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
-
-// myFunction(app); // SHOW THIS PAGE
-myFunction(quiz);
-myFunction(resultWin);
-myFunction(resultLose);
-
 // QUIZ TIMER
 const setTimer = () => {
 	
@@ -297,3 +283,17 @@ option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
+
+// TOGGLE DISPLAY ON/OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
