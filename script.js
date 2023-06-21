@@ -12,14 +12,18 @@ const option2 = document.querySelector(".option2");
 const option3 = document.querySelector(".option3");
 const option4 = document.querySelector(".option4");
 const output = document.getElementById("output");
+output.setAttribute(
+	"style",
+	"margin-top: 20px; font-size: 20px; font-style: italic; color: #66023c; font-weight: bolder;"
+);
 
+// DISPLAY TIMER
 const countdown = document.getElementById("countdown");
-
+// DISPLAY SCORE
 const outputScore = document.getElementById("output-score");
-
+// LOCAL STORAGE
 const nameInput = document.getElementById("result-name");
 const toggleForm = document.getElementById("result-form");
-
 const userNameSpan = document.getElementById("user-name");
 const userScoreSpan = document.getElementById("user-score");
 
@@ -29,7 +33,7 @@ let questionsLeft = 9;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
-let timer = 30;
+let timer = 0;
 
 // QUESTION ARRAY
 let questionArray = [
@@ -115,6 +119,48 @@ let questionArray = [
 	},
 ];
 
+// TOGGLE DISPLAY ON/OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
+myFunction(score);
+
+// QUIZ TIMER
+const setTimer = () => {
+	// let sec = timer;
+	timer = 30;
+
+	let interval = setInterval(function () {
+		if (timer > 0 && questionsLeft) {
+			timer--;
+			countdown.textContent = timer;
+			countdown.setAttribute(
+				"style",
+				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
+			);
+			// console.log(sec); //TEST
+		} else if (timer > 0 && !questionsLeft) {
+			timer = 0;
+			winner();
+		} else if (timer === 0 && questionsLeft) {
+			// HIDE quiz
+			clearInterval(interval);
+
+			outOfTime();
+		} else {
+		}
+	}, 1000);
+};
+
 // START GAME (EVENT)
 document.getElementById("startBtn").addEventListener("click", () => {
 	// HIDE APP Page / SHOW QUIZ Page
@@ -123,7 +169,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
 	output.hidden = true;
 
-	timer = 30;
 	setTimer();
 
 	// RESET
@@ -151,13 +196,12 @@ const showQuestion = () => {
 
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
-	} else if (duplicateArr.length === 0 && timer !== 0) {
+	} else if (duplicateArr.length === 0 && timer > 0) {
+		timer = 0;
 		winner();
 	} else {
 		outOfTime();
 	}
-	// myFunction(quiz); // HIDE QUIZ
-	// DIRECT TO END GAME
 
 	questionsLeft--;
 };
@@ -206,7 +250,7 @@ const winner = () => {
 	const displayScore = document.createElement("p");
 	displayScore.textContent = `RESULT: ${totalScore} / 10`;
 	outputScore.appendChild(displayScore);
-	displayScore.setAttribute("class", "extra");
+	displayScore.setAttribute("style", "text-align: left; margin: 0;");
 
 	return;
 };
@@ -300,41 +344,3 @@ option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
-
-// QUIZ TIMER
-const setTimer = () => {
-	let sec = timer;
-
-	let interval = setInterval(function () {
-		if (sec > 0) {
-			countdown.textContent = sec;
-			sec--;
-			console.log(sec);
-
-			countdown.setAttribute(
-				"style",
-				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
-			);
-			// console.log(sec); //TEST
-		} else if (sec === 0) {
-			// HIDE quiz
-			clearInterval(interval);
-
-			outOfTime();
-		}
-	}, 1000);
-};
-// TOGGLE DISPLAY ON/OFF FUNCTION
-function myFunction(x) {
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
-
-// myFunction(app); // SHOW THIS PAGE
-myFunction(quiz);
-myFunction(resultWin);
-myFunction(resultLose);
-myFunction(score);
