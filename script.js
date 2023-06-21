@@ -11,8 +11,7 @@ const option1 = document.querySelector(".option1");
 const option2 = document.querySelector(".option2");
 const option3 = document.querySelector(".option3");
 const option4 = document.querySelector(".option4");
-
-
+const output = document.getElementById("output");
 
 // VARIABLES
 let totalScore = 0;
@@ -116,6 +115,8 @@ document.getElementById("startBtn").addEventListener("click", () => {
 	myFunction(app);
 	myFunction(quiz);
 
+	output.hidden = true;
+
 	setTimer();
 
 	// RESET
@@ -129,60 +130,58 @@ document.getElementById("startBtn").addEventListener("click", () => {
 });
 
 const showQuestion = () => {
-	
-		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
-		thisQuestion = duplicateArr[randomIndex];
+	let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+	thisQuestion = duplicateArr[randomIndex];
 
-		questionEl.textContent = thisQuestion.question;
-		option1.textContent = thisQuestion.option1;
-		option2.textContent = thisQuestion.option2;
-		option3.textContent = thisQuestion.option3;
-		option4.textContent = thisQuestion.option4;
+	questionEl.textContent = thisQuestion.question;
+	option1.textContent = thisQuestion.option1;
+	option2.textContent = thisQuestion.option2;
+	option3.textContent = thisQuestion.option3;
+	option4.textContent = thisQuestion.option4;
 
-		correctAnswer = thisQuestion.answer;
+	correctAnswer = thisQuestion.answer;
 
-		// Remove used question from array
-		duplicateArr.splice([randomIndex], 1);
-	
-		// myFunction(quiz); // HIDE QUIZ
-		// DIRECT TO END GAME
+	// Remove used question from array
+	duplicateArr.splice([randomIndex], 1);
+
+	// myFunction(quiz); // HIDE QUIZ
+	// DIRECT TO END GAME
 
 	questionsLeft--;
 };
 
-
-
-
 // EVENT FUNCTION
 const checkAnswer = (e) => {
- 
-
 	const selectOption = e.target;
 	const selectAnswer = selectOption.dataset["number"];
 	acceptAnswer = false;
-    
+
 	if (selectAnswer === correctAnswer) {
-        totalScore++;
-    } else {
+		output.hidden = false;
+		output.textContent = "That's Correct";
+		totalScore++;
+	} else {
+		output.hidden = false;
+		output.textContent = "That's Incorrect";
+		timer--;
+	}
 
-        timer--;
-    }
-
-    delay();
+	delay();
 };
 
 //  DELAY ON ANSWER RESPONSE
 const delay = () => {
-    let second = 1;
+	let second = 1;
 
-    let addDelay = setInterval(function () {
-        if (second > 0) {
-            second--;
-        } else {
+	let addDelay = setInterval(function () {
+		if (second > 0) {
+			second--;
+		} else {
             clearInterval(addDelay);
-            showQuestion();
-        }
-    }, 500);
+            output.hidden = true;
+			showQuestion();
+		}
+	}, 500);
 };
 
 // QUIZ ANSWER EVENTS
