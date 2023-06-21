@@ -10,4 +10,4 @@ function myFunction(x) {
     }
 }
 
-// myFunction(app);
+myFunction(app);
