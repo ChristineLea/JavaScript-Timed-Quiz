@@ -24,7 +24,7 @@ NA
 This application is just for fun! Feel free to have a look at my code to see how it works.
 
 ## Roadmap
-No future plans however the possibility of what else to incorporate is endless.
+Fix the glitch at the end of the quiz.
 
 ## Contributing
 Not currently seeking contribution.
