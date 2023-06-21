@@ -224,7 +224,10 @@ const setTimer = () => {
 		if (sec > 0) {
 			sec--;
 			// console.log(sec); //TEST
-		} else {
+        } else {
+            // HIDE quiz
+            myFunction(quiz);
+            outOfTime();
 		}
 	}, 1000);
 };
