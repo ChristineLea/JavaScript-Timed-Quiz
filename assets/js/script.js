@@ -116,6 +116,20 @@ let questionArray = [
 	},
 ];
 
+// TOGGLE DISPLAY ON/OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
+
 // QUIZ TIMER
 const setTimer = () => {
 	
@@ -130,6 +144,7 @@ const setTimer = () => {
 				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
 			);
 		} else if (timer > 0 && duplicateArr.length === 0) {
+			console.log(duplicateArr.length, "at timer");
 			timer = 0;
 			winner();
 		} else {
@@ -161,6 +176,8 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
 // SHOW QUESTION
 const showQuestion = () => {
+
+	console.log(duplicateArr.length, "at showQ");
 	questionsLeft--;
 
 	if (duplicateArr.length !== 0 && timer !== 0) {
@@ -177,6 +194,7 @@ const showQuestion = () => {
 
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
+		console.log(duplicateArr.length, "at after Q");
 	} else if (duplicateArr.length === 0 && timer > 0) {
 		winner();
 	} else {
@@ -214,6 +232,7 @@ const delay = () => {
 			clearInterval(addDelay);
 			output.hidden = true;
 			showQuestion();
+			console.log(duplicateArr.length, "at timer two");
 		}
 	}, 500);
 };
@@ -284,16 +303,3 @@ option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
 
-// TOGGLE DISPLAY ON/OFF FUNCTION
-function myFunction(x) {
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
-
-// myFunction(app); // SHOW THIS PAGE
-myFunction(quiz);
-myFunction(resultWin);
-myFunction(resultLose);
