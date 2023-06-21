@@ -36,13 +36,13 @@
         <h2 id="output-score">Hello</h2>
         <form method="POST" id="result-form">
             <label for="result-name" id="label">Record your score : </label>
-            <input type="text" id="win" id="result-name" name="name" placeholder="enter your initials">
-            <a href="#" id="submit">Submit</a>
+            <input type="text" id="result-name" name="name" placeholder="enter your initials">
+            <input type="button" id="submit">
             <div id="msg-div"></div>
         </form>
         <div class="button">
-            <button class="btn end-btn" id="homeBtn">Return Home</button>
-            <button class="btn end-btn" id="scoreBtn">View Scores</button>
+            <button class="end-btn win-home" id="homeBtn">Return Home</button>
+            <button class="end-btn win-score" id="scoreBtn">View Scores</button>
         </div>
     </div>
 
@@ -50,8 +50,8 @@
     <div class="result-container" id="resultLose">
         <h2 class="margin">Hello</h2>
         <div class="button margin">
-            <button class="btn end-btn" id="homeBtn">Return Home</button>
-            <button class="btn end-btn" id="scoreBtn">View Scores</button>
+            <button class="end-btn lose-home" id="homeBtn">Return Home</button>
+            <button class="end-btn lose-score" id="scoreBtn">View Scores</button>
         </div>
     </div>
 
@@ -62,8 +62,7 @@
             <p>Score :<span id="user-score"></span></p>
         </div>
         <div class="button margin">
-            <button class="btn end-btn" id="homeBtn">Return Home</button>
-            <button class="btn end-btn" id="scoreBtn">View Scores</button>
+            <button class="end-btn score-home" id="homeBtn">Return Home</button>
         </div>
           
         

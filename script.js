@@ -15,6 +15,12 @@ const output = document.getElementById("output");
 
 const outputScore = document.getElementById("output-score");
 
+const nameInput = document.getElementById("result-name");
+const toggleForm = document.getElementById("result-form");
+
+const userNameSpan = document.getElementById("user-name");
+const userScoreSpan = document.getElementById("user-score");
+
 // VARIABLES
 let totalScore = 0;
 let questionsLeft = 9;
@@ -146,21 +152,21 @@ const showQuestion = () => {
 
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
-    } else if (duplicateArr.length === 0 && timer !== 0) {
-        // hide QUIZ
-        myFunction(quiz);
-        
-        winner();
-    } else {
-        // Hide QUIZ
-        myFunction(quiz);
+	} else if (duplicateArr.length === 0 && timer !== 0) {
+		// hide QUIZ
+		myFunction(quiz);
 
-        outOfTime();
-    }
-		// myFunction(quiz); // HIDE QUIZ
-		// DIRECT TO END GAME
+		winner();
+	} else {
+		// Hide QUIZ
+		myFunction(quiz);
 
-		questionsLeft--;
+		outOfTime();
+	}
+	// myFunction(quiz); // HIDE QUIZ
+	// DIRECT TO END GAME
+
+	questionsLeft--;
 };
 
 // EVENT FUNCTION
@@ -196,19 +202,115 @@ const delay = () => {
 	}, 500);
 };
 
-
+// WIN FUNCTION
 const winner = () => {
-    myFunction(resultWin);
+	myFunction(resultWin);
+	toggleForm.hidden = false;
 
-    const displayScore = document.createElement("p");
-    displayScore.textContent = `RESULT: ${totalScore} / 10`;
-    outputScore.appendChild(displayScore);
-    displayScore.setAttribute("class", "extra");
-}
+	const displayScore = document.createElement("p");
+	displayScore.textContent = `RESULT: ${totalScore} / 10`;
+	outputScore.appendChild(displayScore);
+	displayScore.setAttribute("class", "extra");
 
+	return;
+};
+
+// LOSE FUNCTION
 const outOfTime = () => {
     myFunction(resultLose);
-}
+    
+
+};
+// myFunction(score); ADD TO HOME BUTTON
+
+// HOME BUTTON
+         // EVENT FIRES FROM THE LOSE PAGE
+document.getElementByClassName("lose-home").addEventListener("click", function () {
+    myFunction(resultLose);
+
+    myFunction(app);
+});
+        // EVENT FIRES FROM WIN PAGE
+document
+	.getElementByClassName("win-home")
+	.addEventListener("click", function () {
+		myFunction(resultWin);
+
+		myFunction(app);
+	});
+
+        // EVENT FIRES FROM SCORE PAGE
+document
+	.getElementByClassName("score-home")
+	.addEventListener("click", function () {
+		myFunction(score);
+
+		myFunction(app);
+	});
+
+//  SCORE BUTTON
+        // EVENT FIRES FROM LOSE PAGE
+document
+	.getElementByClassName("lose-score")
+	.addEventListener("click", function () {
+		myFunction(resultLose);
+
+		myFunction(score);
+	});
+        // EVENT FIRES FROM WIN PAGE
+document
+	.getElementByClassName("win-score")
+	.addEventListener("click", function () {
+		myFunction(resultWin);
+
+		myFunction(score);
+	});
+
+
+// DISPLAY MESSAGE
+const displayMessage = (type, message) => {
+	msgDiv.textContent = message;
+	msgDiv.setAttribute("class", type);
+};
+
+// GET LOCAL STORAGE
+document.getElementById("scoreBtn").addEventListener("click", function () {
+    
+    myFunction(score);
+
+	let name = localStoragne.getItem("name");
+	let result = localStorage.getItem("result");
+
+	if (!name || !result) {
+		return;
+	}
+
+	userNameSpan.textContent = name;
+	userScoreSpan.textContent = result;
+
+});
+
+// RESULT FORM - SET LOCAL STORAGE
+document.getElementById("submit").addEventListener("click", function (event) {
+	event.preventDefault();
+
+	let name = document.getElementById("result-name").value;
+	let storeScore = totalScore;
+	nameInput.toUpperCase();
+
+	if (!nameInput) {
+		displayMessage("error", "Enter Initials to save your score"); // ADD
+	} else if (nameInput !== typeof "string") {
+		displayMessage("error", "Enter letter characters only");
+	} else {
+		displayMessage("success", "Results saved successfully");
+	}
+
+	localStorage.setItem("name", name);
+	localStorage.setItem("result", storeScore);
+
+	toggleForm.hidden = true;
+});
 
 // QUIZ ANSWER EVENTS
 option1.addEventListener("click", checkAnswer);
@@ -224,10 +326,10 @@ const setTimer = () => {
 		if (sec > 0) {
 			sec--;
 			// console.log(sec); //TEST
-        } else {
-            // HIDE quiz
-            myFunction(quiz);
-            outOfTime();
+		} else {
+			// HIDE quiz
+			myFunction(quiz);
+			outOfTime();
 		}
 	}, 1000);
 };
