@@ -117,6 +117,21 @@ let questionArray = [
 	},
 ];
 
+// TOGGLE DISPLAY ON/OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+// myFunction(app); // SHOW THIS PAGE
+myFunction(quiz);
+myFunction(resultWin);
+myFunction(resultLose);
+myFunction(score);
+
 // START GAME (EVENT)
 document.getElementById("startBtn").addEventListener("click", () => {
 	// HIDE APP Page / SHOW QUIZ Page
@@ -223,48 +238,42 @@ const outOfTime = () => {
 };
 // myFunction(score); ADD TO HOME BUTTON
 
+
+
 // HOME BUTTON
          // EVENT FIRES FROM THE LOSE PAGE
-document.getElementByClassName("lose-home").addEventListener("click", function () {
+document.querySelector(".lose-home").addEventListener("click", () => {
     myFunction(resultLose);
 
     myFunction(app);
 });
         // EVENT FIRES FROM WIN PAGE
-document
-	.getElementByClassName("win-home")
-	.addEventListener("click", function () {
-		myFunction(resultWin);
+document.querySelector(".win-home").addEventListener("click", () => {
+	myFunction(resultWin);
 
-		myFunction(app);
-	});
+	myFunction(app);
+});
 
         // EVENT FIRES FROM SCORE PAGE
-document
-	.getElementByClassName("score-home")
-	.addEventListener("click", function () {
-		myFunction(score);
+document.querySelector(".score-home").addEventListener("click", () => {
+	myFunction(score);
 
-		myFunction(app);
-	});
+	myFunction(app);
+});
 
 //  SCORE BUTTON
         // EVENT FIRES FROM LOSE PAGE
-document
-	.getElementByClassName("lose-score")
-	.addEventListener("click", function () {
-		myFunction(resultLose);
+document.querySelector(".lose-score").addEventListener("click", () => {
+	myFunction(resultLose);
 
-		myFunction(score);
-	});
+	myFunction(score);
+});
         // EVENT FIRES FROM WIN PAGE
-document
-	.getElementByClassName("win-score")
-	.addEventListener("click", function () {
-		myFunction(resultWin);
+document.querySelector(".win-score").addEventListener("click", () => {
+	myFunction(resultWin);
 
-		myFunction(score);
-	});
+	myFunction(score);
+});
 
 
 // DISPLAY MESSAGE
@@ -274,7 +283,7 @@ const displayMessage = (type, message) => {
 };
 
 // GET LOCAL STORAGE
-document.getElementById("scoreBtn").addEventListener("click", function () {
+document.getElementById("scoreBtn").addEventListener("click", () => {
     
     myFunction(score);
 
@@ -334,17 +343,4 @@ const setTimer = () => {
 	}, 1000);
 };
 
-// TOGGLE DISPLAY ON/OFF FUNCTION
-function myFunction(x) {
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
 
-// myFunction(app); // SHOW THIS PAGE
-myFunction(quiz);
-myFunction(resultWin);
-myFunction(resultLose);
-myFunction(score);
