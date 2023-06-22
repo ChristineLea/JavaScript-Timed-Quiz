@@ -26,7 +26,7 @@ let userScoreSpan = document.getElementById("user-score");
 
 // VARIABLES
 let totalScore = 0;
-let questionsLeft = 10;
+// let questionsLeft = 10;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
@@ -132,7 +132,6 @@ myFunction(resultLose);
 
 // QUIZ TIMER
 const setTimer = () => {
-	
 	timer = 60;
 
 	let interval = setInterval(function () {
@@ -143,14 +142,10 @@ const setTimer = () => {
 				"style",
 				"font-size: 32px; color: rgb(32, 30, 30); margin-right: 24px;"
 			);
-		} else if (timer > 0 && duplicateArr.length === 0) {
-			console.log(duplicateArr.length, "at timer");
-			timer = 0;
-			winner();
 		} else {
 			clearInterval(interval);
-			outOfTime();
 		}
+		
 	}, 1000);
 };
 
@@ -165,7 +160,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
 	setTimer();
 
 	// RESET
-	questionsLeft = 10;
 	totalScore = 0;
 
 	// COPY question array
@@ -176,9 +170,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
 // SHOW QUESTION
 const showQuestion = () => {
-
-	console.log(duplicateArr.length, "at showQ");
-	questionsLeft--;
 
 	if (duplicateArr.length !== 0 && timer !== 0) {
 		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
@@ -194,7 +185,6 @@ const showQuestion = () => {
 
 		// Remove used question from array
 		duplicateArr.splice([randomIndex], 1);
-		console.log(duplicateArr.length, "at after Q");
 	} else if (duplicateArr.length === 0 && timer > 0) {
 		winner();
 	} else {
@@ -202,8 +192,9 @@ const showQuestion = () => {
 	}
 };
 
-// CHECK ANSWER 
+// CHECK ANSWER
 const checkAnswer = (e) => {
+	
 	const selectOption = e.target;
 	const selectAnswer = selectOption.dataset["number"];
 
@@ -222,7 +213,6 @@ const checkAnswer = (e) => {
 
 //  DELAY ON ANSWER RESPONSE
 const delay = () => {
-	
 	let second = 1;
 
 	let addDelay = setInterval(function () {
@@ -232,7 +222,6 @@ const delay = () => {
 			clearInterval(addDelay);
 			output.hidden = true;
 			showQuestion();
-			console.log(duplicateArr.length, "at timer two");
 		}
 	}, 500);
 };
@@ -259,7 +248,7 @@ const outOfTime = () => {
 	myFunction(resultLose);
 };
 
-		// HOME BUTTON
+// HOME BUTTON
 // EVENT Fires from LOSE Page
 document.querySelector(".lose-home").addEventListener("click", () => {
 	myFunction(resultLose); // HIDE resultLose SHOW App
@@ -271,6 +260,7 @@ document.querySelector(".lose-home").addEventListener("click", () => {
 document.querySelector(".win-home").addEventListener("click", () => {
 	myFunction(resultWin); // HIDE resultWin SHOW App
 
+	// displayScore.hidden = true;
 	myFunction(app);
 });
 
@@ -302,4 +292,3 @@ option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
-
