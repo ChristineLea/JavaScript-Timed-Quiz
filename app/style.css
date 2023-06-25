@@ -1,3 +1,10 @@
+:root {
+	--var-light: #e6e6fa;
+	--var-purpleL: #e0b0ff;
+	--var-purpleBright: #ee82ee;
+	--var--purpleM: #da70d6;
+	--var-purpleD: #66023c;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -6,23 +13,27 @@
 body {
 	font-size: 62.5%;
 	width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--var-light);
+    background-color: var(--var--purpleM);
 }
 
 .container {
 	max-width: 70%;
-	background-color: green;
+ background-color: var(--var--purpleM);
 	min-height: 70vh;
 	max-height: 80vh;
 	margin: 0 auto;
 	padding: 2rem;
+
 }
 header {
 	display: flex;
 	justify-content: space-between;
 	height: 10vh;
-	font-size: 1.4rem;
-	margin: 1rem;
-	padding: 0 2rem 0 0;
+	font-size: 1.3rem;
+	margin: 2rem;
+	padding: 0 4rem 0 0;
 }
 
 .heading {
@@ -32,4 +43,36 @@ header {
 	font-size: 1.6rem;
 	padding: 1rem;
 	margin: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+p {
+    color: var(--var-purpleD);
+}
+.margin {
+        padding: 0 0 5rem;
+}
+.btn {
+    font-size: 1.4rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 1.4rem;
+    background-color: var(--var-purpleD);
+	color: var(--var-light);
+    letter-spacing: 0.1rem;
+	border: none;
+    align-self: end;
+    transition: all 0.5s ease;
+}
+.btn:hover {
+        opacity: 0.85;
+    transform: translateY(-2px);
+}
+.text {
+    font-size: 1.6rem;
+    margin: 1rem 0;
+padding: 0.8rem;
+	background-color: var(--var-purpleBright);
+	color: rgb(19, 18, 18);
+
+	transition: background-color 1s ease;
 }

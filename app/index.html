@@ -15,19 +15,51 @@
         <p>Time: <span></span></p>
     </header>
 
-    <!-- START QUIZ PAGE -->
-    <div class="layout">
-        <div class="container one">
-
-            <h1 class="heading">Take the JavaScript Quiz</h1>
-            <div class="content">
-                <p>Answer as many questions correctly before the time runs out and see if you make the high score. Be
-                    careful,
-                    every incorrect answer will take off time!</p>
-            </div>
+    <!-- START QUIZ SECTION -->
+    <div class="container one">
+        <h1 class="heading">Take the JavaScript Quiz</h1>
+        <div class="content">
+            <p class="margin">Answer as many questions correctly before the time runs out and see if you make the high
+                score. Be
+                careful,
+                every incorrect answer will take off time!</p>
+            <button class="btn" id="start-btn">Start Quiz</button>
         </div>
     </div>
 
+    <!-- QUIZ SECTION -->
+    <div class="container two">
+        <h2 class="heading" id="question">Placeholder</h2>
+        <div class="content">
+            <div class="option1 text" data-number="option1">1.</div>
+            <div class="option2 text" data-number="option2">2.</div>
+            <div class="option3 text" data-number="option3">3.</div>
+            <div class="option4 text" data-number="option4">4.</div>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <div class="container three">
+        <h2 id="win" class="heading">Quiz Complete!</h2>
+        <div class="content">
+            <form action="POST" id="highscore-form">
+                <label for="name" id="label">Enter initials: </label>
+                <input type="text" id="name" name="name">
+                <input type="button" id="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div class="container four">
+        <h2 class="heading" id="lose">You ran out of time!</h2>
+    </div>
+
+    <div class="container five">
+        <h2 class="heading">High Score</h2>
+        <div class="content">
+            <button class="btn home-btn"">Return Home</button>
+        </div>
+    </div>
 </body>
 
 </html>
