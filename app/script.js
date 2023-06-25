@@ -16,7 +16,7 @@ output.setAttribute(
 	"style",
 	"font-size: 24px; font-style: italic; color: #66023c; font-weight: bolder; text-align: center; margin-top: 5px;"
 );
-
+const showScore = document.querySelector("#win");
 
 // GLOBAL VARIABLES
 let totalScore = 0;
@@ -196,7 +196,20 @@ const delay = () => {
 	}, 500);
 };
 
+// WIN FUNCTION
+const winner = () => {
+	// HIDE Quiz / SHOW ResultWin
+	// myFunction(quiz);
+	// myFunction(resultWin);
 
+	// OUTPUT Score
+	const showScoreEl = document.createElement("h2");
+	showScoreEl.textContent = `RESULT: ${totalScore} / 10`;
+	showScore.appendChild(showScoreEl);
+	showScoreEl.setAttribute("class", "heading");
+
+	return;
+};
 
 // EVENT Check Answer Function
 option1.addEventListener("click", checkAnswer);
