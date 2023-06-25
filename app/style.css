@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-size: 62.5%;
+	width: 100vw;
+}
+
+.container {
+	max-width: 70%;
+	background-color: green;
+	min-height: 70vh;
+	max-height: 80vh;
+	margin: 0 auto;
+	padding: 2rem;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	height: 10vh;
+	font-size: 1.4rem;
+	margin: 1rem;
+	padding: 0 2rem 0 0;
+}
+
+.heading {
+	font-size: 3rem;
+}
+.content {
+	font-size: 1.6rem;
+	padding: 1rem;
+	margin: 2rem 1rem;
+}
