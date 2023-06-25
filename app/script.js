@@ -14,7 +14,7 @@ const option4 = document.querySelector(".option4");
 const output = document.querySelector("#output");
 output.setAttribute(
 	"style",
-	"font-size: 24px; font-style: italic; color: #66023c; font-weight: bolder;"
+	"font-size: 24px; font-style: italic; color: #66023c; font-weight: bolder; text-align: center; margin-top: 5px;"
 );
 
 
@@ -130,7 +130,7 @@ const setTimer = () => {
 document.querySelector("#start-btn").addEventListener("click", () => {
     //HIDE/SHOW
 
-    // output.hidden = true;
+    output.hidden = true;
     totalScore = 0;
     setTimer();
 
@@ -140,25 +140,50 @@ document.querySelector("#start-btn").addEventListener("click", () => {
 
 // SHOW QUESTION
 const showQuestion = () => {
-    	if (duplicateArr.length !== 0 && timer !== 0) {
-			let randomIndex = Math.floor(Math.random() * duplicateArr.length);
-			thisQuestion = duplicateArr[randomIndex];
 
-			questionEl.textContent = thisQuestion.question;
-			option1.textContent = thisQuestion.option1;
-			option2.textContent = thisQuestion.option2;
-			option3.textContent = thisQuestion.option3;
-			option4.textContent = thisQuestion.option4;
+    if (duplicateArr.length !== 0 && timer !== 0) {
+        let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+        thisQuestion = duplicateArr[randomIndex];
 
-			correctAnswer = thisQuestion.answer;
+        questionEl.textContent = thisQuestion.question;
+        option1.textContent = thisQuestion.option1;
+        option2.textContent = thisQuestion.option2;
+        option3.textContent = thisQuestion.option3;
+        option4.textContent = thisQuestion.option4;
 
-			// Remove used question from array
-			duplicateArr.splice([randomIndex], 1);
-		} else if (duplicateArr.length === 0 && timer > 0) {
-			// winner();
-            console.log("test");
-        } else {
-            console.log("i am a test");
-			// outOfTime();
-		}
-}
+        correctAnswer = thisQuestion.answer;
+
+        // Remove used question from array
+        duplicateArr.splice([randomIndex], 1);
+    } else if (duplicateArr.length === 0 && timer > 0) {
+        // winner();
+        console.log("test");
+    } else {
+     console.log("test");
+        // outOfTime();
+    }
+};
+
+// CHECK ANSWER Event Function
+const checkAnswer = (e) => {
+	const selectOption = e.target;
+	const selectAnswer = selectOption.dataset["number"];
+
+	if (selectAnswer === correctAnswer) {
+		output.hidden = false;
+		output.textContent = "That's Correct";
+		totalScore++;
+	} else {
+		output.hidden = false;
+		output.textContent = "That's Incorrect";
+		timer--;
+	}
+
+	// delay();
+};
+
+// EVENT Check Answer Function
+option1.addEventListener("click", checkAnswer);
+option2.addEventListener("click", checkAnswer);
+option3.addEventListener("click", checkAnswer);
+option4.addEventListener("click", checkAnswer);

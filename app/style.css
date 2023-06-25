@@ -38,6 +38,9 @@ header {
 .heading {
 	font-size: 3rem;
 }
+#question {
+    font-size: 2.4rem;
+}
 .content {
 	font-size: 1.6rem;
 	padding: 1rem;
@@ -67,7 +70,7 @@ p {
 	transform: translateY(-2px);
 }
 .text {
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	margin: 1rem 0;
 	padding: 0.8rem;
 	background-color: var(--var-purpleBright);
