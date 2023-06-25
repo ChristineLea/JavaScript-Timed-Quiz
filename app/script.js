@@ -211,6 +211,13 @@ const winner = () => {
 	return;
 };
 
+// OUT OF TIME / LOSE FUNCTION
+const outOfTime = () => {
+	// HIDE Quiz SHOW ResultLose
+	// myFunction(quiz);
+	// myFunction(resultLose);
+};
+
 // EVENT Check Answer Function
 option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
