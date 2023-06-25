@@ -122,4 +122,39 @@ const setTimer = () => {
             clearInterval(interval);
         }
     }, 1000);
+};
+
+// EVENT - START GAME
+document.querySelector("#start-btn").addEventListener("click", () => {
+    //HIDE/SHOW
+
+    // output.hidden = true;
+    totalScore = 0;
+    setTimer();
+
+    duplicateArr = [...questionArr];
+    showQuestion();
+});
+
+// SHOW QUESTION
+const showQuestion = () => {
+    	if (duplicateArr.length !== 0 && timer !== 0) {
+			let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+			thisQuestion = duplicateArr[randomIndex];
+
+			questionEl.textContent = thisQuestion.question;
+			option1.textContent = thisQuestion.option1;
+			option2.textContent = thisQuestion.option2;
+			option3.textContent = thisQuestion.option3;
+			option4.textContent = thisQuestion.option4;
+
+			correctAnswer = thisQuestion.answer;
+
+			// Remove used question from array
+			duplicateArr.splice([randomIndex], 1);
+		} else if (duplicateArr.length === 0 && timer > 0) {
+			winner();
+		} else {
+			outOfTime();
+		}
 }
