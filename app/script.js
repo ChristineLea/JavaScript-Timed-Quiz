@@ -178,9 +178,25 @@ const checkAnswer = (e) => {
 		output.textContent = "That's Incorrect";
 		timer--;
 	}
-
-	// delay();
+	delay();
 };
+
+// DELAY ON ANSWER RESPONSE
+const delay = () => {
+	let second = 1;
+
+	let addDelay = setInterval(function () {
+		if (second > 0) {
+			second--;
+		} else {
+			clearInterval(addDelay);
+			output.hidden = true;
+			showQuestion();
+		}
+	}, 500);
+};
+
+
 
 // EVENT Check Answer Function
 option1.addEventListener("click", checkAnswer);
