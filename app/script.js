@@ -16,9 +16,16 @@ output.setAttribute(
 	"style",
 	"font-size: 24px; font-style: italic; color: #66023c; font-weight: bolder; text-align: center; margin-top: 5px;"
 );
+// SHOW SCORE
 const showScore = document.querySelector("#win");
-
+const showScoreEl = document.createElement("h2");
 const countdown = document.querySelector("#countdown");
+// LOCAL STORAGE
+let nameInput = document.querySelector("#name");
+const highScoresLi = document.createElement("li");
+const highScoresOl = document.querySelector("#highScores");
+
+
 // GLOBAL VARIABLES
 let totalScore = 0;
 let duplicateArr = [];
@@ -125,9 +132,7 @@ document.querySelector("#score-link").addEventListener("click", () => {
 
 	getHighScore();
 });
-let nameInput = document.querySelector("#name");
-const highScoresLi = document.createElement("li");
-const highScoresOl = document.querySelector("#highScores");
+
 
 const getHighScore = () => {
 	let highScore = JSON.parse(localStorage.getItem("newScore"));
@@ -186,7 +191,7 @@ document.querySelector("#start-btn").addEventListener("click", () => {
 	myFunction(sectionTwo);
 
 	output.hidden = true;
-
+	showScoreEl.hidden = true;
 	setTimer();
 	totalScore = 0;
 
@@ -255,7 +260,7 @@ const winner = () => {
 	myFunction(sectionTwo);
 	myFunction(sectionThree);
 	// OUTPUT Score
-	const showScoreEl = document.createElement("h2");
+	showScoreEl.hidden = false;
 	showScoreEl.textContent = `RESULT: ${totalScore} / 10`;
 	showScore.appendChild(showScoreEl);
 	showScoreEl.setAttribute("class", "heading");
