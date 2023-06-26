@@ -4,7 +4,6 @@ const sectionTwo = document.querySelector(".two");
 const sectionThree = document.querySelector(".three");
 const sectionFour = document.querySelector(".four");
 const sectionFive = document.querySelector(".five");
-
 // QUIZ QA CONSTANTS
 const questionEl = document.querySelector("#question");
 const option1 = document.querySelector(".option1");
@@ -19,21 +18,18 @@ output.setAttribute(
 // SHOW SCORE
 const showScore = document.querySelector("#win");
 const showScoreEl = document.createElement("h2");
+// TIMER
 const countdown = document.querySelector("#countdown");
 // LOCAL STORAGE
 let nameInput = document.querySelector("#name");
 const highScoresLi = document.createElement("li");
 const highScoresOl = document.querySelector("#highScores");
-
-
 // GLOBAL VARIABLES
 let totalScore = 0;
 let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
 let timer = 0;
-// CONSTANTS
-
 // QUESTION ARRAY
 const questionArr = [
 	{
@@ -117,6 +113,7 @@ const questionArr = [
 		answer: "option3",
 	},
 ];
+// TOGGLE OFF SECTION / TOGGLE ON HIGH SCORE SECTION
 document.querySelector("#score-link").addEventListener("click", () => {
 	const sections = document.querySelectorAll(".container");
 	for (const section of sections) {
@@ -129,31 +126,25 @@ document.querySelector("#score-link").addEventListener("click", () => {
 		}
 	}
 	myFunction(sectionFive);
-
 	getHighScore();
 });
-
-
+// GET LOCAL STORAGE
 const getHighScore = () => {
 	let highScore = JSON.parse(localStorage.getItem("newScore"));
-
 	if (highScore !== null) {
 		highScoresLi.textContent = `Name: ${highScore.name} - Score: ${highScore.score}`;
 		highScoresOl.append(highScoresLi);
 	}
 };
-
+// SET LOCAL STORAGE
 document.querySelector("#submit").addEventListener("click", function (event) {
 	event.preventDefault();
-
 	let newScore = {
 		name: nameInput.value.trim(),
 		score: totalScore,
 	};
-
 	localStorage.setItem("newScore", JSON.stringify(newScore));
 });
-
 // TOGGLE DISPLAY ON / OFF FUNCTION
 function myFunction(x) {
 	if (x.style.display === "none") {
@@ -162,17 +153,14 @@ function myFunction(x) {
 		x.style.display = "none";
 	}
 }
-
 // myFunction(sectionOne); // SHOW THIS PAGE
 myFunction(sectionTwo);
 myFunction(sectionThree);
 myFunction(sectionFour);
 myFunction(sectionFive);
-
 // TIMER
 const setTimer = () => {
 	timer = 100;
-
 	let interval = setInterval(function () {
 		if (timer > 0) {
 			timer--;
@@ -183,7 +171,6 @@ const setTimer = () => {
 	}, 1000);
 	return;
 };
-
 // EVENT - START GAME
 document.querySelector("#start-btn").addEventListener("click", () => {
 	// HIDE sectionOne SHOW sectionTwo
@@ -198,7 +185,6 @@ document.querySelector("#start-btn").addEventListener("click", () => {
 	duplicateArr = [...questionArr];
 	showQuestion();
 });
-
 // SHOW QUESTION
 const showQuestion = () => {
 	if (duplicateArr.length !== 0 && timer !== 0) {
@@ -221,12 +207,10 @@ const showQuestion = () => {
 		outOfTime();
 	}
 };
-
 // CHECK ANSWER Event Function
 const checkAnswer = (e) => {
 	const selectOption = e.target;
 	const selectAnswer = selectOption.dataset["number"];
-
 	if (selectAnswer === correctAnswer) {
 		output.hidden = false;
 		output.textContent = "That's Correct";
@@ -238,11 +222,9 @@ const checkAnswer = (e) => {
 	}
 	delay();
 };
-
 // DELAY ON ANSWER RESPONSE
 const delay = () => {
 	let second = 1;
-
 	let addDelay = setInterval(function () {
 		if (second > 0) {
 			second--;
@@ -253,7 +235,6 @@ const delay = () => {
 		}
 	}, 500);
 };
-
 // WIN FUNCTION
 const winner = () => {
 	// HIDE sectionTwo SHOW sectionThree
@@ -266,7 +247,6 @@ const winner = () => {
 	showScoreEl.setAttribute("class", "heading");
 	return;
 };
-
 // OUT OF TIME / LOSE FUNCTION
 const outOfTime = () => {
 	// HIDE sectionTwo SHOW sectionFour
@@ -274,7 +254,6 @@ const outOfTime = () => {
 	myFunction(sectionFour);
 	return;
 };
-
 // EVENT / HOME Button from WIN
 document.querySelector("#win-home").addEventListener("click", () => {
 	myFunction(sectionThree);

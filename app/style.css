@@ -17,16 +17,7 @@ body {
 	color: var(--var-light);
 	background-color: var(--var--purpleM);
 }
-
-.container {
-	max-width: 70%;
-	background-color: var(--var--purpleM);
-	min-height: 70vh;
-	max-height: 80vh;
-	margin: 0 auto;
-	padding: 2rem;
-}
-
+/* HEADER SECTION */
 header {
 	display: flex;
 	justify-content: space-between;
@@ -39,21 +30,24 @@ header {
 .nav {
 	display: flex;
 }
-#countdown {
-	margin-left: 1rem;
-	
-}
 #score-link {
 	transition: all 0.8s ease;
 }
 #score-link:hover {
 	color:var(--var-purpleM);
 }
-.heading {
-	font-size: 3rem;
+#countdown {
+	margin-left: 1rem;
+	
 }
-#question {
-    font-size: 2.4rem;
+/* SECTIONS LAYOUT */
+.container {
+	max-width: 70%;
+	background-color: var(--var--purpleM);
+	min-height: 70vh;
+	max-height: 80vh;
+	margin: 0 auto;
+	padding: 2rem;
 }
 .content {
 	font-size: 1.6rem;
@@ -62,12 +56,14 @@ header {
 	display: flex;
 	flex-direction: column;
 }
+/* SECTION FONT STYLES */
+.heading {
+	font-size: 3rem;
+}
 p {
 	color: var(--var-purpleD);
 }
-.margin {
-	padding: 0 0 5rem;
-}
+/* BUTTON STYLES */
 .btn {
 	font-size: 1.4rem;
 	padding: 0.6rem 1.4rem;
@@ -83,21 +79,28 @@ p {
 	opacity: 0.85;
 	transform: translateY(-2px);
 }
+/* SECTION ONE */
+.margin {
+	padding: 0 0 5rem;
+}
+/* SECTION TWO */
+#question {
+    font-size: 2.4rem;
+}
 .text {
 	font-size: 1.4rem;
 	margin: 1rem 0;
 	padding: 0.8rem;
 	background-color: var(--var-purpleBright);
 	color: rgb(19, 18, 18);
-
 	transition: all 1s ease;
 }
-
 .text:hover {
 	cursor: pointer;
 	background-color: var(--var-light);
 	color: rgb(32, 30, 30);
 }
+/* SECTION THREE : FORM */
 #highscore-form {
 	    display: flex;
     align-items: center;
