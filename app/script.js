@@ -1,9 +1,9 @@
 // TOGGLE DISPLAY ON/OFF CONSTANTS
 const sectionOne = document.querySelector(".one");
 const sectionTwo = document.querySelector(".two");
-const sectionThree = document.querySelector(".two");
-const sectionFour = document.querySelector(".two");
-const sectionFive = document.querySelector(".two");
+const sectionThree = document.querySelector(".three");
+const sectionFour = document.querySelector(".four");
+const sectionFive = document.querySelector(".five");
 
 // QUIZ QA CONSTANTS
 const questionEl = document.querySelector("#question");
@@ -18,6 +18,7 @@ output.setAttribute(
 );
 const showScore = document.querySelector("#win");
 
+const countdown = document.querySelector("#countdown");
 // GLOBAL VARIABLES
 let totalScore = 0;
 let duplicateArr = [];
@@ -109,59 +110,73 @@ const questionArr = [
 	},
 ];
 
+// TOGGLE DISPLAY ON / OFF FUNCTION
+function myFunction(x) {
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+// myFunction(sectionOne); // SHOW THIS PAGE
+myFunction(sectionTwo);
+myFunction(sectionThree);
+myFunction(sectionFour);
+myFunction(sectionFive);
+
 // TIMER
 const setTimer = () => {
-    timer = 60;
+	timer = 100;
 
-    const showTimer = document.createElement("span");
-    showTimer.setAttribute("style", "padding-left: 12px;");
-    let interval = setInterval(function () {
-        if (timer > 0 && duplicateArr.length !== 0) {
-            timer--;
-            showTimer.textContent = timer;
-            countdown.appendChild(showTimer);
-        } else {
-            clearInterval(interval);
-        }
-    }, 1000);
+	let interval = setInterval(function () {
+		if (timer > 0) {
+			timer--;
+			countdown.textContent = timer;
+		} else {
+			clearInterval(interval);
+		}
+	}, 1000);
+	return;
 };
+
 
 // EVENT - START GAME
 document.querySelector("#start-btn").addEventListener("click", () => {
-    //HIDE/SHOW
+	// HIDE sectionOne SHOW sectionTwo
+	myFunction(sectionOne);
+	myFunction(sectionTwo);
 
-    output.hidden = true;
-    totalScore = 0;
-    setTimer();
+	output.hidden = true;
 
-    duplicateArr = [...questionArr];
-    showQuestion();
+	setTimer();
+	totalScore = 0;
+
+	duplicateArr = [...questionArr];
+	showQuestion();
 });
 
 // SHOW QUESTION
 const showQuestion = () => {
+	if (duplicateArr.length !== 0 && timer !== 0) {
+		let randomIndex = Math.floor(Math.random() * duplicateArr.length);
+		thisQuestion = duplicateArr[randomIndex];
 
-    if (duplicateArr.length !== 0 && timer !== 0) {
-        let randomIndex = Math.floor(Math.random() * duplicateArr.length);
-        thisQuestion = duplicateArr[randomIndex];
+		questionEl.textContent = thisQuestion.question;
+		option1.textContent = thisQuestion.option1;
+		option2.textContent = thisQuestion.option2;
+		option3.textContent = thisQuestion.option3;
+		option4.textContent = thisQuestion.option4;
 
-        questionEl.textContent = thisQuestion.question;
-        option1.textContent = thisQuestion.option1;
-        option2.textContent = thisQuestion.option2;
-        option3.textContent = thisQuestion.option3;
-        option4.textContent = thisQuestion.option4;
+		correctAnswer = thisQuestion.answer;
 
-        correctAnswer = thisQuestion.answer;
-
-        // Remove used question from array
-        duplicateArr.splice([randomIndex], 1);
-    } else if (duplicateArr.length === 0 && timer > 0) {
-        // winner();
-        console.log("test");
-    } else {
-     console.log("test");
-        // outOfTime();
-    }
+		// Remove used question from array
+		duplicateArr.splice([randomIndex], 1);
+	} else if (duplicateArr.length === 0 && timer > 0) {
+		winner();
+	} else {
+		outOfTime();
+	}
 };
 
 // CHECK ANSWER Event Function
@@ -198,26 +213,40 @@ const delay = () => {
 
 // WIN FUNCTION
 const winner = () => {
-	// HIDE Quiz / SHOW ResultWin
-	// myFunction(quiz);
-	// myFunction(resultWin);
-
+	// HIDE sectionTwo SHOW sectionThree
+	myFunction(sectionTwo);
+	myFunction(sectionThree);
 	// OUTPUT Score
 	const showScoreEl = document.createElement("h2");
 	showScoreEl.textContent = `RESULT: ${totalScore} / 10`;
 	showScore.appendChild(showScoreEl);
 	showScoreEl.setAttribute("class", "heading");
-
 	return;
 };
 
 // OUT OF TIME / LOSE FUNCTION
 const outOfTime = () => {
-	// HIDE Quiz SHOW ResultLose
-	// myFunction(quiz);
-	// myFunction(resultLose);
+	// HIDE sectionTwo SHOW sectionFour
+	myFunction(sectionTwo);
+	myFunction(sectionFour);
+	return;
 };
 
+// EVENT / HOME Button from WIN
+document.querySelector("#win-home").addEventListener("click", () => {
+	myFunction(sectionThree);
+	myFunction(sectionOne);
+});
+// EVENT / HOME Button from LOSE
+document.querySelector("#lose-home").addEventListener("click", () => {
+	myFunction(sectionFour);
+	myFunction(sectionOne);
+});
+// EVENT / HOME Button from SCORE
+document.querySelector("#score-home").addEventListener("click", () => {
+	myFunction(sectionFive);
+	myFunction(sectionOne);
+});
 // EVENT Check Answer Function
 option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);

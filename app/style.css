@@ -26,6 +26,7 @@ body {
 	margin: 0 auto;
 	padding: 2rem;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -34,7 +35,12 @@ header {
 	margin: 2rem;
 	padding: 0 4rem 0 0;
 }
-
+.nav {
+	display: flex;
+}
+#countdown {
+	margin-left: 1rem;
+}
 .heading {
 	font-size: 3rem;
 }
