@@ -25,6 +25,7 @@ let duplicateArr = [];
 let correctAnswer;
 let thisQuestion;
 let timer = 0;
+// CONSTANTS
 
 // QUESTION ARRAY
 const questionArr = [
@@ -109,6 +110,44 @@ const questionArr = [
 		answer: "option3",
 	},
 ];
+document.querySelector("#score-link").addEventListener("click", () => {
+	const sections = document.querySelectorAll(".container");
+	for (const section of sections) {
+		if (section.style.display === "block") {
+			myFunction(section);
+		} else if (!section.style.display) {
+			myFunction(section);
+		} else {
+			section.style.display === "none";
+		}
+	}
+	myFunction(sectionFive);
+
+	getHighScore();
+});
+let nameInput = document.querySelector("#name");
+const highScoresLi = document.createElement("li");
+const highScoresOl = document.querySelector("#highScores");
+
+const getHighScore = () => {
+	let highScore = JSON.parse(localStorage.getItem("newScore"));
+
+	if (highScore !== null) {
+		highScoresLi.textContent = `Name: ${highScore.name} - Score: ${highScore.score}`;
+		highScoresOl.append(highScoresLi);
+	}
+};
+
+document.querySelector("#submit").addEventListener("click", function (event) {
+	event.preventDefault();
+
+	let newScore = {
+		name: nameInput.value.trim(),
+		score: totalScore,
+	};
+
+	localStorage.setItem("newScore", JSON.stringify(newScore));
+});
 
 // TOGGLE DISPLAY ON / OFF FUNCTION
 function myFunction(x) {
@@ -124,8 +163,6 @@ myFunction(sectionTwo);
 myFunction(sectionThree);
 myFunction(sectionFour);
 myFunction(sectionFive);
-
-
 
 // TIMER
 const setTimer = () => {
@@ -253,17 +290,3 @@ option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
-
-document.querySelector("#score-link").addEventListener("click", () => {
-	const sections = document.querySelectorAll(".container")
-	for (const section of sections) {
-		if (section.style.display === "block") {
-			myFunction(section);
-		} else if (!section.style.display) {
-			myFunction(section);
-		} else {
-			section.style.display === "none";
-		}
-	}
-	myFunction(sectionFive);
-});
