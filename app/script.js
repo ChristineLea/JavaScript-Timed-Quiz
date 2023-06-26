@@ -140,7 +140,6 @@ const setTimer = () => {
 	return;
 };
 
-
 // EVENT - START GAME
 document.querySelector("#start-btn").addEventListener("click", () => {
 	// HIDE sectionOne SHOW sectionTwo
@@ -252,3 +251,15 @@ option1.addEventListener("click", checkAnswer);
 option2.addEventListener("click", checkAnswer);
 option3.addEventListener("click", checkAnswer);
 option4.addEventListener("click", checkAnswer);
+
+document.querySelector("#score-link").addEventListener("click", () => {
+	const sections = document.querySelectorAll(".container")
+	for (const section of sections) {
+		if (section.style.display === "block") {
+			myFunction(section);
+		} else {
+			section.style.display === "none";
+		}
+	}
+	myFunction(sectionFive);
+});
