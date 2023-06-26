@@ -125,6 +125,8 @@ myFunction(sectionThree);
 myFunction(sectionFour);
 myFunction(sectionFive);
 
+
+
 // TIMER
 const setTimer = () => {
 	timer = 100;
@@ -256,6 +258,8 @@ document.querySelector("#score-link").addEventListener("click", () => {
 	const sections = document.querySelectorAll(".container")
 	for (const section of sections) {
 		if (section.style.display === "block") {
+			myFunction(section);
+		} else if (!section.style.display) {
 			myFunction(section);
 		} else {
 			section.style.display === "none";

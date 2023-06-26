@@ -34,12 +34,20 @@ header {
 	font-size: 1.3rem;
 	margin: 2rem;
 	padding: 0 4rem 0 0;
+	    text-transform: uppercase;
 }
 .nav {
 	display: flex;
 }
 #countdown {
 	margin-left: 1rem;
+	
+}
+#score-link {
+	transition: all 0.8s ease;
+}
+#score-link:hover {
+	color:var(--var-purpleM);
 }
 .heading {
 	font-size: 3rem;
