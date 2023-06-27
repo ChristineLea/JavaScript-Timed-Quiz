@@ -24,7 +24,7 @@ NA
 This application is just for fun! Feel free to have a look at my code to see how it works.
 
 ## Roadmap
-Fix the glitch at the end of the quiz.
+Update so that multiple highscores can be added.
 
 ## Contributing
 Not currently seeking contribution.
