@@ -3,7 +3,7 @@
 ---
 
 ## Description
- https://christinelea.github.io/JavaScript-Timed-Quiz/
+ [JavaScript Timed Quiz] (https://christinelea.github.io/JavaScript-Timed-Quiz/)
 This interactive quiz incorporates JavaScript and Web API functionality.
 Planning the application started with drawing out a plan to visually see what was required, followed by writing pseudo-code allowed me to acheive this completed application.
 
@@ -22,6 +22,8 @@ NA
 
 ## Usage
 This application is just for fun! Feel free to have a look at my code to see how it works.
+My deployed application's appearance: 
+![deployed website](./assets/images/screenshot-web-app.png)
 
 ## Roadmap
 Update so that multiple highscores can be added.
