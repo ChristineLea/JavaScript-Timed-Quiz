@@ -5,63 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>JAVASCRIPT QUIZ</title>
+    <title>JavaScript Quiz</title>
 </head>
 
 <body>
-
-    <!-- HOME PAGE SECTION -->
-    <div class="app-container" id="app">
-        <div class="center">
-            <h1>Take the JavaScript Quiz!!!</h1>
-            <p>10 questions in 1 minute! Save your score! Every incorrect answer will take time off!</p>
-            <button class="btn" id="startBtn">Start Quiz</button>
+    <!-- HEADER SECTION -->
+    <header>
+        <p id="score-link">View High Score</p>
+        <div class="nav">
+            <p>Time:</p>
+            <p id="countdown"></p>
         </div>
-    </div>
+    </header>
+
+    <!-- START QUIZ SECTION -->
+    <!-- <div class="wrap"> -->
+        <div class="container one">
+            <h1 class="heading">Take the JavaScript Quiz</h1>
+            <div class="content">
+                <p class="margin">Answer as many questions correctly before the time runs out and see if you make the
+                    high
+                    score. Be
+                    careful,
+                    every incorrect answer will take off time!</p>
+                <button class="btn" id="start-btn">Start Quiz</button>
+            </div>
+        </div>
+    <!-- </div> -->
+
+
     <!-- QUIZ SECTION -->
-    <div class="quiz-container" id="quiz">
-        <div class="center">
-            <div id="countdown"></div>
-            <h2 id="question"></h2>
+    <div class="container two">
+        <h2 class="heading" id="question">Placeholder</h2>
+        <div class="content">
             <div class="option1 text" data-number="option1"></div>
             <div class="option2 text" data-number="option2"></div>
             <div class="option3 text" data-number="option3"></div>
             <div class="option4 text" data-number="option4"></div>
+            <div id="output"></div>
         </div>
-        <div id="output"></div>
     </div>
 
-    <!-- WIN SECTION -->
-    <div id="resultWin">
-        <div class="result-container">
-            <h2 id="output-score">Quiz Complete!</h2>
-            <form method="POST" id="result-form" class="row">
-                <label for="name" id="label">Record your score : </label>
-                <input type="text" id="name" name="name" placeholder="enter your initials">
-                <input type="button" id="submit" value="Submit">
+
+    <div class="container three">
+        <h2 id="win" class="heading">Quiz Complete!</h2>
+        <div class="content">
+            <form action="POST" id="highscore-form" class="padding">
+                <label for="name" id="label">Enter initials: </label>
+                <input type="text" id="name" name="name" class="padding" placeholder="Enter your initials">
+                <input type="button" id="submit" value="Submit" class="padding">
             </form>
-            <div class="row">
-                <h2>Your Score</h2>
-                <p>Name : <span id="user-name"></span></p>
-                <p>Score : <span id="user-score"></span></p>
-            </div>
-        </div>
-        <div class="result-container">
-            <div class="button">
-                <button class="end-btn" id="scoreBtn">View Score</button>
-                <button class="end-btn win-home" id="home-Btn">Return Home</button>
-            </div>
+            <button class="btn home-btn" id="win-home">Return Home</button>
         </div>
     </div>
 
-    <!-- LOSE SECTION -->
-    <div class="result-container" id="resultLose">
-        <h2 class="margin">You ran out of time!</h2>
-        <div class="button margin">
-            <button class="end-btn lose-home" id="homeBtn">Return Home</button>
+    <div class="container four">
+        <h2 class="heading" id="lose">You ran out of time!</h2>
+        <div class="content">
+            <button class="btn home-btn" id="lose-home">Return Home</button>
+        </div>
+    </div>
+
+    <div class="container five">
+        <h2 class="heading">High Score</h2>
+        <div class="content">
+            <ol id="highScore"></ol>
+            <button class="btn home-btn" id="score-home">Return Home</button>
         </div>
     </div>
 
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
