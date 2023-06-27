@@ -25,7 +25,7 @@ header {
 	font-size: 1.3rem;
 	margin: 2rem;
 	padding: 0 4rem 0 0;
-	    text-transform: uppercase;
+	text-transform: uppercase;
 }
 .nav {
 	display: flex;
@@ -34,11 +34,10 @@ header {
 	transition: all 0.8s ease;
 }
 #score-link:hover {
-	color:var(--var-purpleM);
+	color: var(--var-purpleM);
 }
 #countdown {
 	margin-left: 1rem;
-	
 }
 /* SECTIONS LAYOUT */
 .container {
@@ -85,7 +84,7 @@ p {
 }
 /* SECTION TWO */
 #question {
-    font-size: 2.4rem;
+	font-size: 2.4rem;
 }
 .text {
 	font-size: 1.4rem;
@@ -101,18 +100,18 @@ p {
 	color: rgb(32, 30, 30);
 }
 /* SECTION THREE : FORM */
+.padding {
+	padding: 0.5rem;
+}
 #highscore-form {
-	    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-	    text-transform: uppercase;
-    margin: 2rem 0 4rem;
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+	margin: 2rem 0 4rem;
 }
 #name {
-	    padding: 0.5rem;
-		margin: 0 0.5rem;
+	margin: 0 0.5rem;
 }
 #submit {
-	    padding: 0.5rem;
-		 text-transform: uppercase;
+	text-transform: uppercase;
 }
